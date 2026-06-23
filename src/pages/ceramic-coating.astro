@@ -1,0 +1,968 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NeonCard from '../components/NeonCard.astro';
+
+const coatings = [
+  {
+    name: "2-Year Ceramic Coating",
+    price: "From $600",
+    durability: "2 Years Protection",
+    desc: "A durable entry-level professional System X ceramic coating. Restores high gloss, adds hydrophobic water beading, and offers reliable everyday clear coat defense.",
+    includes: [
+      "Complete exterior detail",
+      "Iron decontamination & paint decontamination wash",
+      "1-step paint enhancement/polish",
+      "Professional System X ceramic coating installation",
+      "Manufacturer warranty",
+      "Installer warranty",
+      "Carfax registration"
+    ],
+    featured: false
+  },
+  {
+    name: "6-Year Ceramic Coating",
+    price: "From $950",
+    durability: "6 Years Protection",
+    desc: "Our highly recommended professional System X ceramic coating. Creates a thick, permanent chemical barrier that safeguards your paint from harsh weather, bird drops, and UV fading.",
+    includes: [
+      "Complete exterior detail",
+      "Iron decontamination & paint decontamination wash",
+      "1-step paint enhancement/polish",
+      "Professional System X ceramic coating installation",
+      "Manufacturer warranty",
+      "Installer warranty",
+      "Carfax registration"
+    ],
+    featured: true
+  },
+  {
+    name: "10-Year Ceramic Coating",
+    price: "From $1,400",
+    durability: "10 Years Protection",
+    desc: "The absolute peak of automotive paint protection. A dual-layer professional System X installation offering maximum scratch resistance, intense color depth, and self-cleaning ability.",
+    includes: [
+      "Complete exterior detail",
+      "Iron decontamination & paint decontamination wash",
+      "1-step paint enhancement/polish",
+      "Professional System X ceramic coating installation",
+      "Manufacturer warranty",
+      "Installer warranty",
+      "Carfax registration"
+    ],
+    featured: false
+  }
+];
+
+const addOns = [
+  {
+    name: "Glass Coating",
+    price: "From $100",
+    bullets: [
+      "Hydrophobic protection for all exterior glass",
+      "Improves visibility during rain",
+      "Easier bug and water spot removal"
+    ],
+    icon: "fa-solid fa-windshield"
+  },
+  {
+    name: "Wheel Face Coating",
+    price: "From $150",
+    bullets: [
+      "Ceramic protection applied to wheel faces",
+      "Makes brake dust easier to remove"
+    ],
+    icon: "fa-solid fa-circle"
+  },
+  {
+    name: "Wheel Face + Inner Barrel Coating",
+    price: "From $300",
+    bullets: [
+      "Wheels completely removed from vehicle",
+      "Ceramic protection applied to faces and barrels",
+      "Maximum wheel protection and defense"
+    ],
+    icon: "fa-solid fa-circle-dot"
+  },
+  {
+    name: "Leather Coating",
+    price: "From $250",
+    bullets: [
+      "Protects leather from wear, staining, and UV damage",
+      "Maintains a natural, non-greasy factory finish"
+    ],
+    icon: "fa-solid fa-couch"
+  },
+  {
+    name: "Cloth & Fabric Coating",
+    price: "From $250",
+    bullets: [
+      "Protection for cloth seats, carpets, and floor mats",
+      "Helps resist spills and permanent staining"
+    ],
+    icon: "fa-solid fa-socks"
+  }
+];
+---
+
+<Layout 
+  title="Professional Ceramic Coatings" 
+  description="Protect your vehicle with certified 2, 6, or 10-year System X ceramic coatings. High gloss, hydrophobic water beading, and UV protection in Tampa & Valrico."
+>
+  <!-- Page Header -->
+  <section class="page-header-section">
+    <div class="container page-header-grid animate-fade-in">
+      <div class="page-header-content">
+        <span class="eyebrow">SURFACE PROTECTION</span>
+        <h1>Ceramic Coating Packages</h1>
+        <p>The ultimate protection for your automotive investment. Safeguard your car's paint from UV fading, water spots, bird droppings, and chemical staining with a hard, glass-like shield.</p>
+        <div class="header-actions">
+          <a href="/contact?package=coating" class="btn btn-accent">Get A Quote</a>
+        </div>
+      </div>
+      <div class="page-header-visual">
+        <NeonCard>
+          <div class="visual-wrapper">
+            <img src="/images/ceramic-coating.png" alt="Ceramic Coating Showcase" class="header-img" width="500" height="375" fetchpriority="high" />
+          </div>
+        </NeonCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coating Benefits -->
+  <section class="benefits-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">WHY CHOOSE CERAMIC?</span>
+        <h2>High Tech Paint Defense</h2>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-item glass-panel animate-on-scroll">
+          <i class="fa-solid fa-droplet benefit-icon"></i>
+          <h4>Extreme Hydrophobic Beading</h4>
+          <p>Ceramic coatings create a tension-filled surface where water beads up and rolls off instantly. Dirt, dust, and road grime cannot stick, making washing your car fast and effortless.</p>
+        </div>
+        
+        <div class="benefit-item glass-panel animate-on-scroll delay-100">
+          <i class="fa-solid fa-sun benefit-icon"></i>
+          <h4>UV Ray & Oxidation Defense</h4>
+          <p>Florida's brutal sunshine fades and oxidizes clear coats. Ceramic coatings contain active UV blocks that prevent paint fading, color chalking, and premature aging.</p>
+        </div>
+        
+        <div class="benefit-item glass-panel animate-on-scroll delay-200">
+          <i class="fa-solid fa-shield-cat benefit-icon"></i>
+          <h4>Stain & Acid Resistance</h4>
+          <p>Acid rain, bird droppings, and bug splatters etch into unprotected paint within hours. A ceramic shell resists chemical acids, preventing permanent clear coat etching.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tiers comparison -->
+  <section class="tiers-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">DURABILITY OPTIONS</span>
+        <h2>Select Your Protection Shield</h2>
+      </div>
+      
+      <div class="tiers-grid">
+        {coatings.map((coating, index) => (
+          <div class="animate-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+            {coating.featured ? (
+              <NeonCard class="featured-tier-card">
+                <div class="tier-header">
+                  <span class="featured-badge">RECOMMENDED</span>
+                  <h3>{coating.name}</h3>
+                  <span class="tier-durability"><i class="fa-solid fa-shield-halved"></i> {coating.durability}</span>
+                  <span class="tier-price">{coating.price}</span>
+                  <p>{coating.desc}</p>
+                </div>
+                <ul class="tier-includes">
+                  {coating.includes.map(inc => (
+                    <li>
+                      <i class="fa-solid fa-circle-check inc-icon icon-glow"></i>
+                      <span>{inc}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href={`/contact?package=coating`} class="btn btn-accent tier-btn">Select Pro Shield</a>
+              </NeonCard>
+            ) : (
+              <div class="glass-panel standard-tier-card">
+                <div class="tier-header">
+                  <h3>{coating.name}</h3>
+                  <span class="tier-durability"><i class="fa-solid fa-shield-halved"></i> {coating.durability}</span>
+                  <span class="tier-price">{coating.price}</span>
+                  <p>{coating.desc}</p>
+                </div>
+                <ul class="tier-includes">
+                  {coating.includes.map(inc => (
+                    <li>
+                      <i class="fa-solid fa-circle-check inc-icon"></i>
+                      <span>{inc}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href={`/contact?package=coating`} class="btn btn-outline tier-btn">Select Shield</a>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ceramic Coating Add-Ons -->
+  <section class="addons-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">CUSTOM PROTECTION</span>
+        <h2>Ceramic Coating Add-Ons</h2>
+        <p>Enhance your package with specialized ceramic protection for exterior and interior surfaces.</p>
+      </div>
+
+      <div class="addons-grid">
+        {addOns.map((addon, index) => (
+          <div class="animate-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+            <NeonCard>
+              <div class="addon-card-body">
+                <div class="addon-icon-title">
+                  <div class="addon-icon-wrap">
+                    <i class={addon.icon}></i>
+                  </div>
+                  <h3>{addon.name}</h3>
+                </div>
+                <span class="addon-price-tag">{addon.price}</span>
+                <ul class="addon-bullets">
+                  {addon.bullets.map(bullet => (
+                    <li>
+                      <i class="fa-solid fa-circle-check bullet-icon"></i>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </NeonCard>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Interior Protection Section -->
+  <section class="interior-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">CABIN DEFENSE</span>
+        <h2>Leather & Cloth Ceramic Coating</h2>
+        <p>Our Interior Ceramic Coating service adds long-term protection to leather, cloth, and fabric surfaces by creating an invisible protective barrier against spills, stains, UV damage, and everyday wear.</p>
+        <p style="margin-top: 15px; font-size: 0.95rem; color: var(--color-ink-muted); max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">Unlike traditional protectants that wear off quickly or leave greasy residue, ceramic protection bonds directly to the surface while maintaining the natural look and feel of the material.</p>
+      </div>
+
+      <div class="interior-grid">
+        <div class="animate-on-scroll">
+          <NeonCard>
+            <div class="interior-card-content">
+              <span class="eyebrow">LEATHER & VINYL</span>
+              <h3>Leather Ceramic Coating</h3>
+              <span class="interior-price">From $250</span>
+              <p class="interior-desc">Designed to protect leather seating surfaces and trim from: dye transfer from clothing, cracking and premature aging, UV damage, oils and body residue, and everyday wear and discoloration. The coating helps maintain a cleaner surface while making future maintenance easier.</p>
+              
+              <div class="interior-benefits-block">
+                <h4>Benefits:</h4>
+                <ul class="interior-benefits-list">
+                  <li><i class="fa-solid fa-circle-check text-purple"></i> Easier cleaning</li>
+                  <li><i class="fa-solid fa-circle-check text-purple"></i> Helps repel liquids and contaminants</li>
+                  <li><i class="fa-solid fa-circle-check text-purple"></i> Preserves factory appearance</li>
+                  <li><i class="fa-solid fa-circle-check text-purple"></i> Reduces wear over time</li>
+                  <li><i class="fa-solid fa-circle-check text-purple"></i> Non-greasy natural finish</li>
+                </ul>
+              </div>
+              <a href="/contact?package=coating-interior" class="btn btn-outline interior-btn" style="margin-top: var(--space-md);">Book Leather Shield</a>
+            </div>
+          </NeonCard>
+        </div>
+
+        <div class="animate-on-scroll delay-100">
+          <NeonCard>
+            <div class="interior-card-content">
+              <span class="eyebrow">FABRIC & CLOTH</span>
+              <h3>Cloth & Fabric Ceramic Coating</h3>
+              <span class="interior-price">From $250</span>
+              <p class="interior-desc">Our fabric protection treatment helps shield cloth seats, carpets, and floor mats from absorbing spills and staining. Liquids bead up on the surface instead of immediately soaking into the material, giving you more time to clean accidents before permanent staining occurs.</p>
+              
+              <div class="interior-benefits-block">
+                <h4>Benefits:</h4>
+                <ul class="interior-benefits-list">
+                  <li><i class="fa-solid fa-circle-check text-purple"></i> Helps resist spills and stains</li>
+                  <li><i class="fa-solid fa-circle-check text-purple"></i> Protects against dirt and grime buildup</li>
+                  <li><i class="fa-solid fa-circle-check text-purple"></i> Makes maintenance easier</li>
+                  <li><i class="fa-solid fa-circle-check text-purple"></i> Preserves fabric appearance</li>
+                  <li><i class="fa-solid fa-circle-check text-purple"></i> Great for kids, pets, and daily drivers</li>
+                </ul>
+              </div>
+              <a href="/contact?package=coating-interior" class="btn btn-outline interior-btn" style="margin-top: var(--space-md);">Book Fabric Shield</a>
+            </div>
+          </NeonCard>
+        </div>
+      </div>
+
+      <!-- Long-Term Protection Target Audience -->
+      <div class="perfect-for-box glass-panel animate-on-scroll">
+        <h3>Long-Term Interior Protection</h3>
+        <p>Interior ceramic coatings are one of the best ways to preserve your vehicle's interior condition and resale value while reducing long-term wear from everyday use.</p>
+        <div class="perfect-for-grid">
+          <div class="perfect-item">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>New vehicles</span>
+          </div>
+          <div class="perfect-item">
+            <i class="fa-solid fa-baby"></i>
+            <span>Family vehicles</span>
+          </div>
+          <div class="perfect-item">
+            <i class="fa-solid fa-crown"></i>
+            <span>Luxury interiors</span>
+          </div>
+          <div class="perfect-item">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Work vehicles</span>
+          </div>
+          <div class="perfect-item">
+            <i class="fa-solid fa-paw"></i>
+            <span>Pet owners</span>
+          </div>
+          <div class="perfect-item">
+            <i class="fa-solid fa-hands-clean"></i>
+            <span>Anyone wanting easier interior maintenance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Detail a Brand-New Vehicle Section -->
+  <section class="education-section section-padding">
+    <div class="container education-grid">
+      <div class="education-info animate-on-scroll">
+        <span class="eyebrow">SMART AUTO OWNERSHIP</span>
+        <h2>Why Detail a Brand-New Vehicle?</h2>
+        <p>
+          Just because a vehicle is brand new does not mean it is fully protected or perfectly clean. New vehicles often arrive with dealership swirl marks, light contamination, dust from transport, adhesive residue, and little to no real long-term protection applied.
+        </p>
+        <p>
+          Many dealerships use quick wash methods that can create swirl marks and imperfections before the customer even takes delivery. Proper detailing and protection help correct and prevent these issues early.
+        </p>
+        <p>
+          A professionally protected vehicle is easier to maintain, easier to clean, and better preserved over time.
+        </p>
+      </div>
+      
+      <div class="education-cards animate-on-scroll delay-100">
+        <NeonCard>
+          <div class="education-card-body">
+            <h4>Benefits of Detailing a New Vehicle:</h4>
+            <ul class="education-list">
+              <li><i class="fa-solid fa-shield-halved text-purple"></i> <span><strong>Protects the paint</strong> from the start before wear begins</span></li>
+              <li><i class="fa-solid fa-wand-magic-sparkles text-purple"></i> <span>Adds long-term <strong>gloss and protection</strong></span></li>
+              <li><i class="fa-solid fa-hand-sparkles text-purple"></i> <span>Makes future maintenance <strong>much easier</strong></span></li>
+              <li><i class="fa-solid fa-circle-check text-purple"></i> <span>Helps prevent <strong>premature wear</strong></span></li>
+              <li><i class="fa-solid fa-car text-purple"></i> <span>Preserves and protects <strong>interior materials</strong></span></li>
+              <li><i class="fa-solid fa-sack-dollar text-purple"></i> <span>Keeps the vehicle looking newer, preserving <strong>resale value</strong></span></li>
+            </ul>
+          </div>
+        </NeonCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="cta-section section-padding">
+    <div class="container">
+      <div class="cta-content glass-panel animate-on-scroll">
+        <h2>Schedule Your Ceramic Defense Coating</h2>
+        <p>Invest in your vehicle's gloss and resale value. Serving Tampa, Valrico, Brandon, and surrounding cities.</p>
+        <div class="cta-buttons">
+          <a href="tel:+18135394723" class="btn btn-primary"><i class="fa-solid fa-phone"></i> (813) 539-4723</a>
+          <a href="/contact" class="btn btn-accent">Request Coating Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Header section */
+  .page-header-section {
+    padding-top: 160px;
+    padding-bottom: 60px;
+    background: radial-gradient(circle at 50% 0%, rgba(139, 47, 141, 0.08) 0%, transparent 60%);
+    border-bottom: 1px solid var(--color-hairline);
+  }
+
+  .page-header-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-xl);
+    align-items: center;
+    text-align: left;
+  }
+
+  .page-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .page-header-content h1 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .page-header-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+  }
+
+  .header-actions {
+    margin-top: var(--space-xs);
+  }
+
+  .page-header-visual {
+    width: 100%;
+  }
+
+  .visual-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 991px) {
+    .page-header-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: var(--space-lg);
+    }
+
+    .page-header-content {
+      align-items: center;
+    }
+
+    .page-header-content p {
+      text-align: center;
+    }
+
+    .page-header-visual {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-xxl) auto;
+  }
+
+  .section-header h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin-top: var(--space-xs);
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-accent-neon);
+    letter-spacing: 0.1em;
+  }
+
+  /* Benefits Grid */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .benefit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .benefit-icon {
+    font-size: 1.75rem;
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .benefit-item h4 {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+  }
+
+  .benefit-item p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Tiers Grid */
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .featured-tier-card, .standard-tier-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .standard-tier-card {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .tier-header {
+    margin-bottom: var(--space-lg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border: 1px solid var(--color-accent-neon);
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .tier-header h3 {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+  }
+
+  .tier-durability {
+    font-size: 0.85rem;
+    color: var(--color-accent-neon);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .tier-price {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0;
+  }
+
+  .tier-header p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .tier-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+    flex-grow: 1;
+  }
+
+  .tier-includes li {
+    display: flex;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+  }
+
+  .inc-icon {
+    color: var(--color-ink-muted);
+    font-size: 1rem;
+    margin-top: 2px;
+  }
+
+  .icon-glow {
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 5px rgba(224, 76, 228, 0.4);
+  }
+
+  .tier-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Bottom CTA */
+  .cta-content {
+    text-align: center;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    color: var(--color-primary);
+  }
+
+  .cta-content p {
+    font-size: 1rem;
+    max-width: 500px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  /* Interior Protection Section Styling */
+  .interior-section {
+    border-top: 1px solid var(--color-hairline);
+    background: radial-gradient(circle at 50% 100%, rgba(139, 47, 141, 0.05) 0%, transparent 60%);
+  }
+
+  .interior-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xxl);
+  }
+
+  .interior-card-content {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: var(--space-sm);
+  }
+
+  .interior-price {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .interior-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-xs);
+  }
+
+  .interior-benefits-block h4 {
+    color: var(--color-primary);
+    font-size: 1rem;
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-display);
+  }
+
+  .interior-benefits-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .interior-benefits-list li {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .text-purple {
+    color: var(--color-accent-neon);
+    margin-top: 3px;
+    font-size: 0.8rem;
+  }
+
+  .interior-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Perfect For Box */
+  .perfect-for-box {
+    padding: var(--space-xl);
+    text-align: center;
+    border: 1px solid var(--color-hairline-accent);
+  }
+
+  .perfect-for-box h3 {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .perfect-for-box p {
+    font-size: 0.95rem;
+    max-width: 700px;
+    margin: 0 auto var(--space-lg) auto;
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+  }
+
+  .perfect-for-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-md);
+  }
+
+  .perfect-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+  }
+
+  .perfect-item:hover {
+    border-color: var(--color-accent-neon);
+    background: rgba(139, 47, 141, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .perfect-item i {
+    font-size: 1.25rem;
+    color: var(--color-accent-neon);
+  }
+
+  .perfect-item span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+
+  /* Addons Grid */
+  .addons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+
+  .addon-card-body {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    height: 100%;
+  }
+
+  .addon-icon-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .addon-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(139, 47, 141, 0.12);
+    border: 1px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent-neon);
+    font-size: 1.15rem;
+    box-shadow: 0 0 10px rgba(224, 76, 228, 0.2);
+    flex-shrink: 0;
+  }
+
+  .addon-icon-title h3 {
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .addon-price-tag {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .addon-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: var(--space-xs) 0 0 0;
+    padding: 0;
+  }
+
+  .addon-bullets li {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    gap: var(--space-xs);
+    align-items: flex-start;
+  }
+
+  .bullet-icon {
+    color: var(--color-accent-neon);
+    margin-top: 3px;
+    font-size: 0.8rem;
+  }
+
+  /* Education Grid */
+  .education-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-xxl);
+    align-items: center;
+    border-top: 1px solid var(--color-hairline);
+    padding-top: var(--space-xxl);
+    margin-top: var(--space-xl);
+  }
+
+  .education-info h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0 var(--space-md) 0;
+  }
+
+  .education-info p {
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+  }
+
+  .education-card-body {
+    padding: var(--space-xl);
+  }
+
+  .education-card-body h4 {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-md);
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  .education-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: 0;
+    margin: 0;
+  }
+
+  .education-list li {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .text-purple {
+    color: var(--color-accent-neon);
+    margin-top: 3px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 991px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .tiers-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .interior-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .perfect-for-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .addons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .education-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .addons-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .perfect-for-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-header-section h1 {
+      font-size: 2.25rem;
+    }
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+    .cta-buttons a {
+      width: 100%;
+    }
+  }
+</style>

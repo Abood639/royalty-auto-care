@@ -1,0 +1,19 @@
+# Royalty Auto Care
+
+Premium mobile detailing, expert paint correction, and System X ceramic coatings serving Valrico, Tampa, Brandon, and the surrounding Tampa Bay Area.
+
+## Core Services
+
+- **Auto Detailing**: [Auto Detailing Page](/auto-detailing) — Interior deep cleaning, exterior hand washes, engine bay cleaning, headlight restoration, window polishing, and wrap removal.
+- **Paint Correction**: [Paint Correction Page](/paint-correction) — 1-Step paint enhancement, 2-Step paint correction, and 3-Step paint correction.
+- **Ceramic Coating**: [Ceramic Coating Page](/ceramic-coating) — 2-Year, 6-Year, and 10-Year certified System X paint protection, plus interior and surface add-ons.
+- **Maintenance Plans**: [Maintenance & Fleet Page](/maintenance-plans) — Weekly, bi-weekly, monthly, or bi-monthly routine upkeep plans.
+- **Fleet Services**: [Maintenance & Fleet Page](/maintenance-plans) — Commercial mobile washing for business vehicle fleets.
+
+## Contact & Location
+
+- **Phone**: (813) 539-4723
+- **Email**: rroyaltyautocare@gmail.com
+- **Area**: Valrico, FL 33596 (Serving Greater Tampa Bay Area)
+- **Hours**: Monday - Sunday: 8:00 AM - 6:00 PM
+- **Quote Booking**: [Contact Page](/contact)

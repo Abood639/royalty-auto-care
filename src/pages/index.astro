@@ -1,0 +1,797 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NeonCard from '../components/NeonCard.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import QuoteCalculator from '../components/QuoteCalculator.astro';
+
+const services = [
+  {
+    icon: "fa-solid fa-car-burst",
+    title: "Auto Detailing",
+    price: "From $120",
+    desc: "Bumper-to-bumper interior & exterior restoration. Includes deep vacuuming, steam sanitization, leather conditioning, clay bar, and ceramic sealants.",
+    link: "/auto-detailing"
+  },
+  {
+    icon: "fa-solid fa-wand-magic-sparkles",
+    title: "Paint Correction",
+    price: "From $300",
+    desc: "Precision machine polishing to eliminate oxidation, holograms, scratches, and swirl marks, restoring a deep mirror-like reflection.",
+    link: "/paint-correction"
+  },
+  {
+    icon: "fa-solid fa-shield-halved",
+    title: "Ceramic Coating",
+    price: "From $600",
+    desc: "State-of-the-art nano-ceramic shield protection. Unmatched hydrophobics, self-cleaning slickness, UV block, and lasting gloss warranties.",
+    link: "/ceramic-coating"
+  }
+];
+---
+
+<Layout title="Mobile Detailing & Paint Protection">
+  <!-- JSON-LD SEO Schema -->
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AutoBodyShop",
+    "name": "Royalty Auto Care LLC",
+    "image": "https://royaltyautocare.net/images/royalty.png",
+    "logo": "https://royaltyautocare.net/images/royalty.png",
+    "@id": "https://royaltyautocare.net",
+    "url": "https://royaltyautocare.net/",
+    "telephone": "(813) 539-4723",
+    "email": "rroyaltyautocare@gmail.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Valrico",
+      "addressRegion": "FL",
+      "postalCode": "33596",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 27.9397,
+      "longitude": -82.2476
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Valrico", "sameAs": "https://en.wikipedia.org/wiki/Valrico,_Florida" },
+      { "@type": "City", "name": "Tampa", "sameAs": "https://en.wikipedia.org/wiki/Tampa,_Florida" },
+      { "@type": "City", "name": "Brandon", "sameAs": "https://en.wikipedia.org/wiki/Brandon,_Florida" },
+      { "@type": "City", "name": "St. Petersburg", "sameAs": "https://en.wikipedia.org/wiki/St._Petersburg,_Florida" },
+      { "@type": "City", "name": "Clearwater", "sameAs": "https://en.wikipedia.org/wiki/Clearwater,_Florida" },
+      { "@type": "City", "name": "Lakeland", "sameAs": "https://en.wikipedia.org/wiki/Lakeland,_Florida" },
+      { "@type": "City", "name": "Spring Hill", "sameAs": "https://en.wikipedia.org/wiki/Spring_Hill,_Florida" }
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Royalty Auto Care Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Auto Detailing",
+            "description": "Bumper-to-bumper interior & exterior restoration. Includes deep vacuuming, steam sanitization, leather conditioning, clay bar, and ceramic sealants.",
+            "url": "https://royaltyautocare.net/auto-detailing"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Paint Correction",
+            "description": "Precision machine polishing to eliminate oxidation, holograms, scratches, and swirl marks, restoring a deep mirror-like reflection.",
+            "url": "https://royaltyautocare.net/paint-correction"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Ceramic Coating",
+            "description": "State-of-the-art nano-ceramic shield protection. Unmatched hydrophobics, self-cleaning slickness, UV block, and lasting gloss warranties.",
+            "url": "https://royaltyautocare.net/ceramic-coating"
+          }
+        }
+      ]
+    }
+  })} />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-container animate-fade-in">
+      <div class="hero-content">
+        <span class="hero-eyebrow animate-on-scroll">PREMIUM MOBILE AUTO CARE</span>
+        <h1 class="hero-title animate-on-scroll delay-100">
+          Give Your Vehicle The <span class="text-glow">Royal Treatment.</span>
+        </h1>
+        <p class="hero-subtitle animate-on-scroll delay-200">
+          Expert mobile detailing, paint correction, and ceramic coatings. We bring high-end restoration directly to your home or office in Valrico, Tampa, and Brandon.
+        </p>
+        <div class="hero-actions animate-on-scroll delay-300">
+          <a href="/contact" class="btn btn-accent btn-lg">Book Service</a>
+          <a href="#services" class="btn btn-outline btn-lg">Explore Treatments</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual animate-on-scroll delay-200">
+        <NeonCard>
+          <div class="hero-visual-content">
+            <div class="visual-badge">LIVE RESULTS</div>
+            <img src="/images/home.png" alt="Showcase polished sports car" class="hero-car-img" width="500" height="375" fetchpriority="high" />
+            <div class="glow-spotlight"></div>
+          </div>
+        </NeonCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">CLIENT REVIEWS</span>
+        <h2>The Royal Treatment Experience</h2>
+      </div>
+      
+      <div class="reviews-widget-wrap animate-on-scroll delay-100" style="margin-top: var(--space-xl);">
+        <script type="text/javascript" src="https://reputationhub.site/reputation/assets/review-widget.js" is:inline></script>
+        <iframe class="lc_reviews_widget" src="https://reputationhub.site/reputation/widgets/review_widget/uT3ZO2Bg9stB0gTE2JOk" frameborder="0" scrolling="no" style="min-width: 100%; width: 100%; border: none;"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">THE ROYAL PROCESS</span>
+        <h2>How Mobile Detailing Works</h2>
+      </div>
+      
+      <div class="process-grid">
+        <div class="process-step animate-on-scroll">
+          <div class="step-num-wrap">
+            <span class="step-num">1</span>
+            <div class="step-line"></div>
+          </div>
+          <h3>Select & Customize</h3>
+          <p>Estimate your custom price online or give us a call to pick the package that fits your vehicle's specific paint and interior needs.</p>
+        </div>
+        
+        <div class="process-step animate-on-scroll delay-100">
+          <div class="step-num-wrap">
+            <span class="step-num">2</span>
+            <div class="step-line"></div>
+          </div>
+          <h3>We Come To You</h3>
+          <p>Our fully equipped mobile detailing rig arrives at your home or office, complete with pure spot-free water, power generators, and premium gear.</p>
+        </div>
+        
+        <div class="process-step animate-on-scroll delay-200">
+          <div class="step-num-wrap">
+            <span class="step-num">3</span>
+          </div>
+          <h3>Drive Clean & Protected</h3>
+          <p>Experience the jaw-dropping transformation. Hand-washed, polished paint, and a deep cleaned, disinfected interior that feels brand new.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before/After Slider Section -->
+  <section class="slider-section section-padding">
+    <div class="container slider-grid">
+      <div class="slider-info-col animate-on-scroll">
+        <span class="eyebrow">RESTORATION RESULTS</span>
+        <h2>Erase Swirls & Scratches</h2>
+        <p>
+          Florida sun, automatic car washes, and road debris ruin your car's clear coat. Our multi-step machine polishing corrects oxidation, swirl marks, and scratches, restoring a flawless mirror reflection.
+        </p>
+        <div class="spec-points">
+          <div class="spec-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Removes 80-90% of swirl marks</span>
+          </div>
+          <div class="spec-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Brings back deep paint color</span>
+          </div>
+          <div class="spec-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Sealed with ceramic polymers</span>
+          </div>
+        </div>
+        <a href="/paint-correction" class="btn btn-outline" style="margin-top: var(--space-md);">Learn About Paint Correction</a>
+      </div>
+      
+      <div class="slider-col animate-on-scroll delay-100">
+        <BeforeAfter />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">OUR EXPERTISE</span>
+        <h2>Premium Care Packages</h2>
+      </div>
+      
+      <div class="services-cards-grid">
+        {services.map((service, index) => (
+          <div class="animate-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+            <NeonCard>
+              <div class="service-card-body">
+                <div class="service-icon-wrap">
+                  <i class={service.icon}></i>
+                </div>
+                <h3>{service.title}</h3>
+                <span class="service-price-tag">{service.price}</span>
+                <p>{service.desc}</p>
+                <a href={service.link} class="btn btn-outline service-card-btn">Treatment Details</a>
+              </div>
+            </NeonCard>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Estimator & Calculator Section -->
+  <section class="estimator-section section-padding">
+    <div class="container estimator-grid">
+      <div class="estimator-info animate-on-scroll">
+        <span class="eyebrow">TRANSPARENT PRICING</span>
+        <h2>Build Your Detailing Package</h2>
+        <p>
+          We believe in transparent, upfront estimates. Use our custom calculator to select your vehicle size, choose your primary package, and add services like headlight restoration or engine detailing.
+        </p>
+        <div class="guarantee-box">
+          <i class="fa-solid fa-shield"></i>
+          <div>
+            <h4>Satisfaction Guaranteed</h4>
+            <p>We inspect every vehicle with you before and after treatment to ensure perfect satisfaction.</p>
+          </div>
+        </div>
+      </div>
+      <div class="estimator-form-col animate-on-scroll delay-100">
+        <QuoteCalculator />
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Bottom CTA Section -->
+  <section class="cta-section section-padding">
+    <div class="container">
+      <div class="cta-content glass-panel animate-on-scroll">
+        <div class="cta-glow"></div>
+        <h2>Ready to Restore Your Car?</h2>
+        <p>Don't let Florida weather damage your vehicle's paint. Schedule your royal mobile detailing treatment today.</p>
+        <div class="cta-buttons">
+          <a href="tel:+18135394723" class="btn btn-primary"><i class="fa-solid fa-phone"></i> (813) 539-4723</a>
+          <a href="/contact" class="btn btn-accent">Request Free Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero section */
+  .hero-section {
+    position: relative;
+    padding-top: 160px;
+    padding-bottom: 80px;
+    overflow: hidden;
+    background: radial-gradient(circle at 80% 30%, rgba(139, 47, 141, 0.12) 0%, transparent 50%);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(6, 3, 6, 0.2) 0%, var(--color-canvas) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-xxl);
+    align-items: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-accent-neon);
+    letter-spacing: 0.15em;
+    margin-bottom: var(--space-md);
+    text-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-lg);
+    color: var(--color-primary);
+  }
+
+  .text-glow {
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 25px rgba(224, 76, 228, 0.4);
+    background: linear-gradient(to right, #ffffff, var(--color-accent-neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xl);
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .hero-visual-content {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 100%;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .visual-badge {
+    position: absolute;
+    top: var(--space-md);
+    left: var(--space-md);
+    background: rgba(139, 47, 141, 0.8);
+    border: 1px solid var(--color-accent-neon);
+    padding: var(--space-xxs) var(--space-xs);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    z-index: 10;
+  }
+
+  .hero-car-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .glow-spotlight {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: var(--radius-full);
+    background: radial-gradient(circle, rgba(224, 76, 228, 0.25) 0%, transparent 70%);
+    bottom: -50px;
+    right: -50px;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-xxl) auto;
+  }
+
+  .section-header h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin-top: var(--space-xs);
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-accent-neon);
+    letter-spacing: 0.1em;
+  }
+
+  /* Process Steps styling */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .step-num-wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: var(--space-md);
+  }
+
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    background: var(--color-surface-2);
+    border: 2px solid var(--color-accent);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 15px rgba(139, 47, 141, 0.3);
+  }
+
+  .step-line {
+    flex-grow: 1;
+    height: 2px;
+    background: linear-gradient(to right, var(--color-accent), var(--color-hairline));
+    margin-left: var(--space-md);
+  }
+
+  .process-step h3 {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .process-step p {
+    font-size: 0.95rem;
+  }
+
+  /* Before/After slider grid */
+  .slider-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--space-xxl);
+    align-items: center;
+  }
+
+  .slider-info-col h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0 var(--space-md) 0;
+  }
+
+  .slider-info-col p {
+    margin-bottom: var(--space-lg);
+  }
+
+  .spec-points {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .spec-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .spec-item i {
+    color: var(--color-accent-neon);
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px rgba(224, 76, 228, 0.4);
+  }
+
+  .spec-item span {
+    font-size: 0.95rem;
+    color: var(--color-primary);
+  }
+
+  /* Services cards */
+  .services-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .service-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    height: 100%;
+  }
+
+  .service-icon-wrap {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-md);
+    background: rgba(139, 47, 141, 0.15);
+    border: 1px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent-neon);
+    font-size: 1.35rem;
+    box-shadow: 0 0 10px rgba(224, 76, 228, 0.2);
+  }
+
+  .service-card-body h3 {
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .service-price-tag {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .service-card-body p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    flex-grow: 1;
+    margin: 0;
+  }
+
+  .service-card-btn {
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  /* Estimator Grid */
+  .estimator-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: var(--space-xxl);
+    align-items: center;
+  }
+
+  .estimator-info h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0 var(--space-md) 0;
+  }
+
+  .estimator-info p {
+    margin-bottom: var(--space-xl);
+  }
+
+  .guarantee-box {
+    display: flex;
+    gap: var(--space-md);
+    background: rgba(139, 47, 141, 0.05);
+    border: 1px solid var(--color-hairline-accent);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+  }
+
+  .guarantee-box i {
+    font-size: 2rem;
+    color: var(--color-accent-neon);
+    margin-top: var(--space-xxs);
+    text-shadow: 0 0 10px rgba(224, 76, 228, 0.4);
+  }
+
+  .guarantee-box h4 {
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xxs);
+  }
+
+  .guarantee-box p {
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Testimonials styling */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .rating-stars {
+    display: flex;
+    gap: var(--space-xxs);
+    color: #ffd700;
+    font-size: 0.85rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+    font-style: italic;
+    line-height: 1.5;
+    flex-grow: 1;
+    color: var(--color-primary);
+  }
+
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+  }
+
+  .author-role {
+    font-size: 0.8rem;
+    color: var(--color-ink-muted);
+  }
+
+  /* Bottom CTA */
+  .cta-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-content {
+    position: relative;
+    padding: var(--space-xxl);
+    text-align: center;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, var(--color-surface-1), var(--color-surface-2));
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .cta-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: var(--radius-full);
+    background: radial-gradient(circle, rgba(139, 47, 141, 0.15) 0%, transparent 70%);
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .cta-content h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    max-width: 580px;
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Responsive breakpoints */
+  @media (max-width: 991px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: var(--space-xl);
+    }
+    
+    .hero-content {
+      align-items: center;
+    }
+    
+    .hero-title {
+      font-size: 2.75rem;
+    }
+    
+    .hero-subtitle {
+      max-width: 100%;
+    }
+    
+    .slider-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .services-cards-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .estimator-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .process-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+    
+    .step-line {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 2.25rem;
+    }
+    .hero-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+    .hero-actions a {
+      width: 100%;
+    }
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+    .cta-buttons a {
+      width: 100%;
+    }
+  }
+</style>

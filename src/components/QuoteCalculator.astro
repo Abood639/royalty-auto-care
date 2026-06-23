@@ -1,0 +1,690 @@
+---
+import NeonCard from './NeonCard.astro';
+---
+
+<NeonCard class="quote-calculator-card">
+  <div class="calculator-header">
+    <h3>Estimate Your Service</h3>
+    <p>Select your vehicle size and desired package options below to view a price estimate.</p>
+  </div>
+  
+  <div class="calculator-body">
+    <!-- Vehicle Selection -->
+    <div class="calc-section">
+      <span class="calc-section-label">1. Vehicle Size</span>
+      <div class="vehicle-options-grid">
+        <label class="vehicle-option active">
+          <input type="radio" name="vehicle-size" value="sedan" checked />
+          <i class="fa-solid fa-car"></i>
+          <span>Sedan / Coupe</span>
+          <span class="price-mod">Base Price</span>
+        </label>
+        
+        <label class="vehicle-option">
+          <input type="radio" name="vehicle-size" value="suv" />
+          <i class="fa-solid fa-car-side"></i>
+          <span>Midsize SUV / Crossover</span>
+          <span class="price-mod">+$50</span>
+        </label>
+        
+        <label class="vehicle-option">
+          <input type="radio" name="vehicle-size" value="truck" />
+          <i class="fa-solid fa-truck-pickup"></i>
+          <span>Truck / Large SUV / Van</span>
+          <span class="price-mod">+$100</span>
+        </label>
+      </div>
+    </div>
+    
+    <!-- Category Tabs -->
+    <div class="calc-section">
+      <span class="calc-section-label">2. Care Category</span>
+      <div class="category-tabs">
+        <button type="button" class="category-tab active" data-category="detailing">
+          <i class="fa-solid fa-soap"></i>
+          <span>Detailing</span>
+        </button>
+        <button type="button" class="category-tab" data-category="correction">
+          <i class="fa-solid fa-circle-half-stroke"></i>
+          <span>Paint Correction</span>
+        </button>
+        <button type="button" class="category-tab" data-category="coating">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Ceramic Coating</span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Package Level Selection -->
+    <div class="calc-section">
+      <span class="calc-section-label">3. Service Level</span>
+      
+      <!-- Detailing Levels -->
+      <div class="package-list active" data-category="detailing">
+        <label class="package-option">
+          <input type="radio" name="package-level" value="detailing-exterior" data-base="120" />
+          <div class="package-meta">
+            <span class="package-name">Premium Exterior Detail</span>
+            <span class="package-base">$120</span>
+          </div>
+          <p class="package-desc">Clay bar paint decontamination, wheels, door jambs, and 3-month polymer protection sealant.</p>
+        </label>
+        <label class="package-option active">
+          <input type="radio" name="package-level" value="detailing-full" data-base="225" checked />
+          <div class="package-meta">
+            <span class="package-name">Full Detail Service</span>
+            <span class="package-base">$225</span>
+          </div>
+          <p class="package-desc">Bumper-to-bumper detailing. Restores freshness with enzymatic odor neutralizer, protects with 6-month ceramic sealant.</p>
+        </label>
+        <label class="package-option">
+          <input type="radio" name="package-level" value="detailing-interior" data-base="295" />
+          <div class="package-meta">
+            <span class="package-name">Premium Interior Detail</span>
+            <span class="package-base">$295</span>
+          </div>
+          <p class="package-desc">Deep restorative upholstery shampooing, 210°F heated extraction, steam sanitization, and odor treatment.</p>
+        </label>
+      </div>
+
+      <!-- Paint Correction Levels -->
+      <div class="package-list" data-category="correction">
+        <label class="package-option">
+          <input type="radio" name="package-level" value="correction-enhancement" data-base="300" />
+          <div class="package-meta">
+            <span class="package-name">Enhancement Package</span>
+            <span class="package-base">$300</span>
+          </div>
+          <p class="package-desc">Removes light swirls and restores gloss. Polishes paint to increase gloss & reflection while removing 40-60% of light swirl marks and mild oxidation.</p>
+        </label>
+        <label class="package-option">
+          <input type="radio" name="package-level" value="correction-correction" data-base="500" />
+          <div class="package-meta">
+            <span class="package-name">Correction Package</span>
+            <span class="package-base">$500</span>
+          </div>
+          <p class="package-desc">Removes moderate defects and dramatically improves clarity. Cutting stage + polishing stage. Safely eliminates 70-90% of moderate/heavy swirls.</p>
+        </label>
+        <label class="package-option">
+          <input type="radio" name="package-level" value="correction-restoration" data-base="800" />
+          <div class="package-meta">
+            <span class="package-name">Restoration Package</span>
+            <span class="package-base">$800</span>
+          </div>
+          <p class="package-desc">Maximum defect removal and gloss restoration. Highest level multi-stage restoration. Near-showroom clarity, depth, and mirror-like reflections.</p>
+        </label>
+      </div>
+
+      <!-- Ceramic Coating Levels -->
+      <div class="package-list" data-category="coating">
+        <label class="package-option">
+          <input type="radio" name="package-level" value="coating-2year" data-base="600" />
+          <div class="package-meta">
+            <span class="package-name">2-Year Ceramic Coating</span>
+            <span class="package-base">$600</span>
+          </div>
+          <p class="package-desc">System X professional nano-ceramic protection. Delivers durable hydrophobic defense and a deep mirror gloss shine.</p>
+        </label>
+        <label class="package-option">
+          <input type="radio" name="package-level" value="coating-6year" data-base="950" />
+          <div class="package-meta">
+            <span class="package-name">6-Year Ceramic Coating</span>
+            <span class="package-base">$950</span>
+          </div>
+          <p class="package-desc">System X professional grade coating. Deep chemical bond protecting against UV rays, paint fading, and staining.</p>
+        </label>
+        <label class="package-option">
+          <input type="radio" name="package-level" value="coating-10year" data-base="1400" />
+          <div class="package-meta">
+            <span class="package-name">10-Year Ceramic Coating</span>
+            <span class="package-base">$1400</span>
+          </div>
+          <p class="package-desc">Ultimate dual-layer System X installation. Maximum scratch defense, deep gloss, and 10 years of certified defense.</p>
+        </label>
+        <label class="package-option">
+          <input type="radio" name="package-level" value="coating-interior" data-base="250" />
+          <div class="package-meta">
+            <span class="package-name">Leather & Cloth Ceramic Shield</span>
+            <span class="package-base">$250</span>
+          </div>
+          <p class="package-desc">Bonds to leather, vinyl, and cloth fibers. Prevents clothing dye transfer, liquid absorption, and UV aging.</p>
+        </label>
+      </div>
+    </div>
+    
+    <!-- Add-ons Selection -->
+    <div class="calc-section">
+      <span class="calc-section-label">4. Add-on Services</span>
+      <div class="addons-grid">
+        <label class="addon-option">
+          <input type="checkbox" name="addons" value="engine" data-price="50" />
+          <span class="checkbox-custom"></span>
+          <span class="addon-name">Engine Bay Detail</span>
+          <span class="addon-price">+$50</span>
+        </label>
+        
+        <label class="addon-option">
+          <input type="checkbox" name="addons" value="headlights" data-price="100" />
+          <span class="checkbox-custom"></span>
+          <span class="addon-name">Headlight Restoration</span>
+          <span class="addon-price">+$100</span>
+        </label>
+        
+        <label class="addon-option">
+          <input type="checkbox" name="addons" value="window-polish" data-price="100" />
+          <span class="checkbox-custom"></span>
+          <span class="addon-name">Window Polishing</span>
+          <span class="addon-price">+$100</span>
+        </label>
+
+        <label class="addon-option">
+          <input type="checkbox" name="addons" value="pet-hair" data-price="50" />
+          <span class="checkbox-custom"></span>
+          <span class="addon-name">Heavy Pet Hair Removal</span>
+          <span class="addon-price">+$50</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Total & CTA -->
+  <div class="calculator-footer">
+    <div class="total-wrap">
+      <span class="total-label">Estimated Price</span>
+      <div class="total-price">
+        <span class="currency">$</span>
+        <span class="amount" id="totalAmount">225</span>
+        <span class="starting-asterisk">*</span>
+      </div>
+    </div>
+    <button class="btn btn-accent btn-large" id="bookEstimateBtn">Book This Package</button>
+  </div>
+</NeonCard>
+
+<script>
+  function initCalculator() {
+    const card = document.querySelector(".quote-calculator-card");
+    if (!card) return;
+    
+    const vehicleInputs = card.querySelectorAll("input[name='vehicle-size']");
+    const categoryTabs = card.querySelectorAll(".category-tab");
+    const packageLists = card.querySelectorAll(".package-list");
+    const addonInputs = card.querySelectorAll("input[name='addons']");
+    const totalAmount = card.querySelector("#totalAmount") as HTMLElement;
+    const bookBtn = card.querySelector("#bookEstimateBtn") as HTMLButtonElement;
+    
+    let activeCategory = "detailing";
+
+    const vehicleMods: Record<string, number> = {
+      sedan: 0,
+      suv: 50,
+      truck: 100
+    };
+    
+    function calculateTotal() {
+      // Find selected vehicle size
+      let vehicleVal = "sedan";
+      vehicleInputs.forEach(input => {
+        const radio = input as HTMLInputElement;
+        if (radio.checked) {
+          vehicleVal = radio.value;
+          radio.closest(".vehicle-option")?.classList.add("active");
+        } else {
+          radio.closest(".vehicle-option")?.classList.remove("active");
+        }
+      });
+      
+      // Filter level choice based on active package list
+      const activeList = card.querySelector(`.package-list[data-category="${activeCategory}"]`);
+      if (!activeList) return;
+      
+      const levelInputs = activeList.querySelectorAll("input[name='package-level']");
+      let base = 0;
+      let selectedPackageVal = "";
+      
+      levelInputs.forEach(input => {
+        const radio = input as HTMLInputElement;
+        if (radio.checked) {
+          base = parseInt(radio.dataset.base || "0", 10);
+          selectedPackageVal = radio.value;
+          radio.closest(".package-option")?.classList.add("active");
+        } else {
+          radio.closest(".package-option")?.classList.remove("active");
+        }
+      });
+      
+      const mod = vehicleMods[vehicleVal] || 0;
+      
+      let addonsSum = 0;
+      addonInputs.forEach(input => {
+        const check = input as HTMLInputElement;
+        if (check.checked) {
+          addonsSum += parseInt(check.dataset.price || "0", 10);
+          check.closest(".addon-option")?.classList.add("active");
+        } else {
+          check.closest(".addon-option")?.classList.remove("active");
+        }
+      });
+      
+      const total = base + mod + addonsSum;
+      
+      if (totalAmount) {
+        totalAmount.textContent = total.toString();
+      }
+    }
+    
+    // Switch active category
+    categoryTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        // Toggle active tabs
+        categoryTabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        
+        activeCategory = tab.getAttribute("data-category") || "detailing";
+        
+        // Show/hide level selector lists
+        packageLists.forEach(list => {
+          const cat = list.getAttribute("data-category");
+          if (cat === activeCategory) {
+            list.classList.add("active");
+            
+            // Check first radio button of the newly active list if none is checked
+            const inputs = list.querySelectorAll("input[name='package-level']");
+            let anyChecked = false;
+            inputs.forEach(i => {
+              if ((i as HTMLInputElement).checked) anyChecked = true;
+            });
+            if (!anyChecked && inputs.length > 0) {
+              (inputs[0] as HTMLInputElement).checked = true;
+            }
+          } else {
+            list.classList.remove("active");
+          }
+        });
+        
+        calculateTotal();
+      });
+    });
+    
+    // Add event listeners to input elements
+    vehicleInputs.forEach(input => input.addEventListener("change", calculateTotal));
+    
+    packageLists.forEach(list => {
+      const inputs = list.querySelectorAll("input[name='package-level']");
+      inputs.forEach(input => input.addEventListener("change", calculateTotal));
+    });
+    
+    addonInputs.forEach(input => input.addEventListener("change", calculateTotal));
+    
+    if (bookBtn) {
+      bookBtn.addEventListener("click", () => {
+        let vehicleVal = "sedan";
+        vehicleInputs.forEach(input => {
+          if ((input as HTMLInputElement).checked) vehicleVal = (input as HTMLInputElement).value;
+        });
+        
+        const activeList = card.querySelector(`.package-list[data-category="${activeCategory}"]`);
+        let packageVal = "";
+        if (activeList) {
+          const inputs = activeList.querySelectorAll("input[name='package-level']");
+          inputs.forEach(input => {
+            if ((input as HTMLInputElement).checked) packageVal = (input as HTMLInputElement).value;
+          });
+        }
+        
+        const addonsSelected: string[] = [];
+        addonInputs.forEach(input => {
+          if ((input as HTMLInputElement).checked) addonsSelected.push((input as HTMLInputElement).value);
+        });
+        
+        const queryParams = new URLSearchParams({
+          vehicle: vehicleVal,
+          category: activeCategory,
+          package: packageVal,
+          addons: addonsSelected.join(',')
+        });
+        
+        window.location.href = `/contact?${queryParams.toString()}`;
+      });
+    }
+    
+    calculateTotal();
+  }
+  
+  initCalculator();
+  document.addEventListener("astro:after-swap", initCalculator);
+</script>
+
+<style>
+  .quote-calculator-card {
+    width: 100%;
+  }
+
+  .calculator-header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .calculator-header h3 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-xxs);
+  }
+
+  .calculator-header p {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+  }
+
+  .calc-section {
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .calc-section-label {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Vehicle options grid */
+  .vehicle-options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .vehicle-option {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    cursor: pointer;
+    text-align: center;
+    transition: var(--transition-smooth);
+    position: relative;
+  }
+
+  .vehicle-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .vehicle-option i {
+    font-size: 1.5rem;
+    color: var(--color-ink-muted);
+    transition: var(--transition-fast);
+  }
+
+  .vehicle-option span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+
+  .price-mod {
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+  }
+
+  /* Active states */
+  .vehicle-option.active {
+    border-color: var(--color-accent-neon);
+    background: rgba(139, 47, 141, 0.08);
+    box-shadow: 0 0 15px rgba(224, 76, 228, 0.2);
+  }
+
+  .vehicle-option.active i {
+    color: var(--color-accent-neon);
+  }
+
+  /* Category tabs */
+  .category-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xs);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--color-hairline);
+    padding: 4px;
+    border-radius: var(--radius-md);
+  }
+
+  .category-tab {
+    background: transparent;
+    border: none;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    color: var(--color-ink-muted);
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    transition: var(--transition-fast);
+  }
+
+  .category-tab i {
+    font-size: 1rem;
+  }
+
+  .category-tab.active {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border: 1px solid var(--color-accent-neon);
+    box-shadow: 0 0 10px rgba(224, 76, 228, 0.2);
+  }
+
+  /* Package Lists */
+  .package-list {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .package-list.active {
+    display: flex;
+  }
+
+  .package-option {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs);
+    position: relative;
+  }
+
+  .package-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .package-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .package-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+  }
+
+  .package-base {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-accent-neon);
+  }
+
+  .package-desc {
+    font-size: 0.8rem;
+    color: var(--color-ink-muted);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .package-option.active {
+    border-color: var(--color-accent-neon);
+    background: rgba(139, 47, 141, 0.08);
+    box-shadow: 0 0 15px rgba(224, 76, 228, 0.2);
+  }
+
+  /* Addons list */
+  .addons-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .addon-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-md);
+    padding: 12px var(--space-md);
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+
+  .addon-option input {
+    display: none;
+  }
+
+  .checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-xs);
+    position: relative;
+    display: block;
+    background: #000;
+  }
+
+  .addon-option.active {
+    border-color: var(--color-accent-neon);
+    background: rgba(139, 47, 141, 0.05);
+  }
+
+  .addon-option.active .checkbox-custom {
+    border-color: var(--color-accent-neon);
+    background: var(--color-accent);
+  }
+
+  .addon-option.active .checkbox-custom::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.7rem;
+    color: var(--color-primary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .addon-name {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+  }
+
+  .addon-price {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--color-accent-neon);
+    font-weight: 600;
+  }
+
+  /* Calculator Footer */
+  .calculator-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-hairline);
+    padding-top: var(--space-lg);
+    margin-top: var(--space-lg);
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .total-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .total-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-ink-muted);
+  }
+
+  .total-price {
+    display: flex;
+    align-items: flex-start;
+    color: var(--color-primary);
+    font-family: var(--font-display);
+  }
+
+  .currency {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: var(--space-xxs);
+    color: var(--color-accent-neon);
+  }
+
+  .amount {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(224, 76, 228, 0.4);
+  }
+
+  .starting-asterisk {
+    font-size: 1rem;
+    color: var(--color-ink-muted);
+  }
+
+  .btn-large {
+    padding: 14px 28px;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 575px) {
+    .vehicle-options-grid {
+      grid-template-columns: 1fr;
+    }
+    .category-tabs {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .calculator-footer {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .total-wrap {
+      align-items: center;
+      margin-bottom: var(--space-xs);
+    }
+  }
+</style>

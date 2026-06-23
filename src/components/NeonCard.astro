@@ -1,0 +1,24 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+}
+
+const { class: className = '', id } = Astro.props;
+---
+
+<div class={`neon-card ${className}`} id={id}>
+  <div class="neon-card-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  /* Local styling rules override default border-beam speeds if desired */
+  .neon-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+</style>

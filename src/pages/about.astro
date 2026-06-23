@@ -1,0 +1,466 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NeonCard from '../components/NeonCard.astro';
+
+const values = [
+  {
+    icon: "fa-solid fa-bullseye",
+    title: "Precision Craftsmanship",
+    desc: "We don't rush. We inspect every panel under high-intensity detailing lights to ensure no swirl marks, compound residue, or dust specs remain."
+  },
+  {
+    icon: "fa-solid fa-truck-fast",
+    title: "Complete Convenience",
+    desc: "We respect your time. Our fully self-contained mobile detail vans bring premium restoration directly to your garage, driveway, or office parking lot."
+  },
+  {
+    icon: "fa-solid fa-gem",
+    title: "Premium Protection",
+    desc: "We only use certified, professional-grade ceramic coatings, paint sealants, and leather conditioners engineered to survive Florida's extreme weather."
+  }
+];
+
+const areas = ["Valrico", "Tampa", "Brandon", "Riverview", "Lithia", "Seffner", "FishHawk", "Bloomingdale"];
+---
+
+<Layout 
+  title="About Our Mobile Auto Detailing Team" 
+  description="Learn about Royalty Auto Care, our dedication to detailing excellence, and our mobile service areas in Tampa and Valrico."
+>
+  <!-- Page Header -->
+  <section class="page-header-section">
+    <div class="container animate-fade-in">
+      <span class="eyebrow">OUR STORY</span>
+      <h1>Royalty Auto Care</h1>
+      <p>We are a dedicated mobile auto care team based in Valrico, Florida, serving car enthusiasts, busy professionals, and families across the Greater Tampa Bay Area.</p>
+    </div>
+  </section>
+
+  <!-- Mission Statement -->
+  <section class="mission-section section-padding">
+    <div class="container mission-grid">
+      <div class="mission-text animate-on-scroll">
+        <span class="eyebrow">OUR MISSION</span>
+        <h2>Unwavering Dedication To Paint & Interior Perfection</h2>
+        <p>
+          At Royalty Auto Care, we believe detailing is more than a simple car wash. It's an art of restoration. Every curve, panel, and stitch of your vehicle deserves precision care.
+        </p>
+        <p>
+          Whether we are correcting swirly paint on a daily driver or applying a certified multi-year ceramic coating on a luxury supercar, we arrive with the same goal: to deliver the royal treatment and leave your vehicle in showroom condition.
+        </p>
+      </div>
+      
+      <div class="mission-values animate-on-scroll delay-100">
+        <NeonCard>
+          <div class="founder-box">
+            <div class="founder-image-wrapper">
+              <img src="/images/about.jpg" alt="Royalty Auto Care Owner" class="founder-photo" width="240" height="240" loading="lazy" />
+            </div>
+            <h4>The Royal Guarantee</h4>
+            <p>"We treat every single vehicle we work on as if it were our own. No shortcuts, no compromises. If it's not perfect, we'll make it right."</p>
+            <span class="founder-sig">&mdash; Owner & Operator</span>
+          </div>
+        </NeonCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="values-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">HOW WE OPERATE</span>
+        <h2>Our Core Principles</h2>
+      </div>
+      
+      <div class="values-grid">
+        {values.map((val, index) => (
+          <div class="value-item glass-panel animate-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+            <i class={val.icon}></i>
+            <h3>{val.title}</h3>
+            <p>{val.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas Map Info -->
+  <section class="areas-section section-padding">
+    <div class="container areas-grid">
+      <div class="areas-info animate-on-scroll">
+        <span class="eyebrow">CONVENIENCE DELIVERED</span>
+        <h2>Mobile Service Areas</h2>
+        <p>
+          We are based out of Valrico, FL 33596, and operate as a fully mobile unit. We bring our own water tanks and power generators to complete details anywhere at your convenience.
+        </p>
+        <p>
+          <strong>We offer rapid dispatch to the following Florida service zones:</strong>
+        </p>
+        
+        <div class="areas-chips-grid">
+          {areas.map(area => (
+            <span class="area-chip">
+              <i class="fa-solid fa-location-crosshairs"></i>
+              {area}, FL
+            </span>
+          ))}
+        </div>
+      </div>
+      
+      <div class="areas-visual animate-on-scroll delay-100">
+        <div class="map-card glass-panel">
+          <div class="map-header">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Tampa Bay Dispatch Zone</span>
+          </div>
+          <div class="map-placeholder">
+            <div class="map-pulse-point"></div>
+            <div class="map-ring"></div>
+            <span class="map-label">Valrico Headquarters</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="cta-section section-padding">
+    <div class="container">
+      <div class="cta-content glass-panel animate-on-scroll">
+        <h2>Experience The Showroom Finish</h2>
+        <p>Book your premium mobile detail wash, paint correction, or ceramic coating today.</p>
+        <div class="cta-buttons">
+          <a href="tel:+18135394723" class="btn btn-primary"><i class="fa-solid fa-phone"></i> (813) 539-4723</a>
+          <a href="/contact" class="btn btn-accent">Request Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Header section */
+  .page-header-section {
+    padding-top: 160px;
+    padding-bottom: 60px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, rgba(139, 47, 141, 0.08) 0%, transparent 60%);
+    border-bottom: 1px solid var(--color-hairline);
+  }
+
+  .page-header-section h1 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0 var(--space-md) 0;
+  }
+
+  .page-header-section p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Mission Grid */
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-xxl);
+    align-items: center;
+  }
+
+  .mission-text h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0 var(--space-md) 0;
+  }
+
+  .mission-text p {
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+  }
+
+  .founder-box {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-md);
+  }
+
+  .founder-image-wrapper {
+    width: 100%;
+    max-width: 240px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-hairline);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    margin-bottom: var(--space-xs);
+  }
+
+  .founder-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .founder-box h4 {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+  }
+
+  .founder-box p {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--color-primary);
+  }
+
+  .founder-sig {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent-neon);
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-xxl) auto;
+  }
+
+  .section-header h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin-top: var(--space-xs);
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-accent-neon);
+    letter-spacing: 0.1em;
+  }
+
+  /* Values Grid */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .value-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .value-item i {
+    font-size: 1.75rem;
+    color: var(--color-accent-neon);
+    background: rgba(139, 47, 141, 0.15);
+    border: 1px solid var(--color-accent);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+  }
+
+  .value-item h3 {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+  }
+
+  .value-item p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Areas Grid */
+  .areas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xxl);
+    align-items: center;
+  }
+
+  .areas-info h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0 var(--space-md) 0;
+  }
+
+  .areas-info p {
+    margin-bottom: var(--space-md);
+  }
+
+  .areas-chips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+  }
+
+  .area-chip {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-hairline);
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .area-chip i {
+    color: var(--color-accent-neon);
+  }
+
+  /* Map graphic styling */
+  .map-card {
+    padding: 0;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+  }
+
+  .map-header {
+    background: var(--color-surface-2);
+    border-bottom: 1px solid var(--color-hairline);
+    padding: 12px var(--space-md);
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .map-placeholder {
+    height: 300px;
+    background: linear-gradient(rgba(10, 5, 10, 0.4), rgba(6, 3, 6, 0.75)), url('/tampa-bay-map.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Grid overlay for map effect */
+  .map-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 20px 20px;
+    background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  }
+
+  .map-pulse-point {
+    width: 12px;
+    height: 12px;
+    background: var(--color-accent-neon);
+    border-radius: var(--radius-full);
+    z-index: 10;
+    box-shadow: 0 0 15px var(--color-accent-neon);
+  }
+
+  .map-ring {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(224, 76, 228, 0.4);
+    border-radius: var(--radius-full);
+    animation: map-ping 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    z-index: 5;
+  }
+
+  .map-label {
+    margin-top: var(--space-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    z-index: 10;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+  }
+
+  @keyframes map-ping {
+    0% {
+      width: 0px;
+      height: 0px;
+      opacity: 1;
+    }
+    100% {
+      width: 180px;
+      height: 180px;
+      opacity: 0;
+    }
+  }
+
+  /* Bottom CTA */
+  .cta-content {
+    text-align: center;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    color: var(--color-primary);
+  }
+
+  .cta-content p {
+    font-size: 1rem;
+    max-width: 500px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  @media (max-width: 991px) {
+    .mission-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+    
+    .values-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .areas-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 575px) {
+    .areas-chips-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+    .cta-buttons a {
+      width: 100%;
+    }
+  }
+</style>

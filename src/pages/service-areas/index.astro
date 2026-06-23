@@ -1,0 +1,373 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NeonCard from '../../components/NeonCard.astro';
+
+const serviceAreas = [
+  {
+    name: "Valrico, FL",
+    slug: "valrico-fl",
+    desc: "We provide rapid-response mobile detailing, paint correction, and ceramic coatings to all residential and commercial addresses in Valrico.",
+    btnText: "View Valrico Services"
+  },
+  {
+    name: "Tampa, FL",
+    slug: "tampa-fl",
+    desc: "We provide rapid-response mobile detailing, paint correction, and ceramic coatings to all residential and commercial addresses in Tampa.",
+    btnText: "View Tampa Services"
+  },
+  {
+    name: "Brandon, FL",
+    slug: "brandon-fl",
+    desc: "We provide rapid-response mobile detailing, paint correction, and ceramic coatings to all residential and commercial addresses in Brandon.",
+    btnText: "View Brandon Services"
+  },
+  {
+    name: "St. Petersburg, FL",
+    slug: "st-petersburg-fl",
+    desc: "We provide rapid-response mobile detailing, paint correction, and ceramic coatings to all residential and commercial addresses in St. Petersburg.",
+    btnText: "View St. Petersburg Services"
+  },
+  {
+    name: "Clearwater, FL",
+    slug: "clearwater-fl",
+    desc: "We provide rapid-response mobile detailing, paint correction, and ceramic coatings to all residential and commercial addresses in Clearwater.",
+    btnText: "View Clearwater Services"
+  },
+  {
+    name: "Lakeland, FL",
+    slug: "lakeland-fl",
+    desc: "We provide rapid-response mobile detailing, paint correction, and ceramic coatings to all residential and commercial addresses in Lakeland.",
+    btnText: "View Lakeland Services"
+  },
+  {
+    name: "Spring Hill, FL",
+    slug: "spring-hill-fl",
+    desc: "We provide rapid-response mobile detailing, paint correction, and ceramic coatings to all residential and commercial addresses in Spring Hill.",
+    btnText: "View Spring Hill Services"
+  }
+];
+---
+
+<Layout 
+  title="Mobile Auto Detailing Service Areas" 
+  description="We bring professional mobile detailing, paint correction, and ceramic coatings to your driveway or office. Serving Valrico, Tampa, Brandon, St. Petersburg, Clearwater, Lakeland, and Spring Hill FL."
+>
+  <!-- Page Header -->
+  <section class="page-header-section">
+    <div class="container animate-fade-in">
+      <span class="eyebrow">CONVENIENCE DELIVERED</span>
+      <h1>Our Service Areas</h1>
+      <p>Royalty Auto Care is a fully self-contained mobile unit. We bring our own spot-free water tanks and quiet power generators directly to your garage, driveway, or office parking lot. Explore our local dispatch zones below.</p>
+    </div>
+  </section>
+
+  <!-- Service Areas Grid -->
+  <section class="areas-grid-section section-padding">
+    <div class="container">
+      <div class="areas-list-grid">
+        {serviceAreas.map((area, index) => (
+          <div class="area-card-wrapper animate-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+            <NeonCard>
+              <div class="area-card">
+                <div class="area-image-wrap">
+                  <img src={`/images/${area.slug}.jpg`} alt={`Mobile auto detailing in ${area.name}`} class="area-image" loading="lazy" width="400" height="250" />
+                  <div class="area-image-overlay"></div>
+                </div>
+                <div class="area-content">
+                  <h3>{area.name}</h3>
+                  <p>{area.desc}</p>
+                  <a href={`/service-areas/${area.slug}`} class="btn btn-accent area-btn">{area.btnText}</a>
+                </div>
+              </div>
+            </NeonCard>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Dispatch Map Info -->
+  <section class="dispatch-map-section section-padding">
+    <div class="container dispatch-grid">
+      <div class="dispatch-info animate-on-scroll">
+        <span class="eyebrow">TAMPA BAY ZONE</span>
+        <h2>Rapid Mobile Dispatch</h2>
+        <p>
+          We operate across the entire Greater Tampa Bay region. Our detailing vans are equipped to handle everything from standard premium washes to multi-stage paint restorations and multi-year ceramic coating applications.
+        </p>
+        <p>
+          <strong>No water or power hookups required.</strong> Our rigs are fully independent, letting you focus on your day while we restore your car to showroom glory right outside.
+        </p>
+        <div class="dispatch-features">
+          <div class="dispatch-feature">
+            <i class="fa-solid fa-droplet text-purple"></i>
+            <span>Spot-Free Deionized Water</span>
+          </div>
+          <div class="dispatch-feature">
+            <i class="fa-solid fa-bolt text-purple"></i>
+            <span>Quiet Power Generators</span>
+          </div>
+          <div class="dispatch-feature">
+            <i class="fa-solid fa-clock-rotate-left text-purple"></i>
+            <span>On-Time Arrival Guarantee</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="dispatch-visual animate-on-scroll delay-100">
+        <div class="map-card glass-panel">
+          <div class="map-header">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Tampa Bay Dispatch Zone</span>
+          </div>
+          <div class="map-image-wrapper">
+            <img src="/tampa-bay-map.png" alt="Tampa Bay Dispatch Zone Map" class="map-img" width="600" height="450" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="cta-section section-padding">
+    <div class="container">
+      <div class="cta-content glass-panel animate-on-scroll">
+        <h2>Ready for the Royal Treatment?</h2>
+        <p>Book your premium mobile detail, paint correction, or ceramic coating today.</p>
+        <div class="cta-buttons">
+          <a href="tel:+18135394723" class="btn btn-primary"><i class="fa-solid fa-phone"></i> (813) 539-4723</a>
+          <a href="/contact" class="btn btn-accent">Request Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Header section */
+  .page-header-section {
+    padding-top: 160px;
+    padding-bottom: 60px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, rgba(139, 47, 141, 0.08) 0%, transparent 60%);
+    border-bottom: 1px solid var(--color-hairline);
+  }
+
+  .page-header-section h1 {
+    font-size: 3.5rem;
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-md);
+    background: linear-gradient(135deg, var(--color-primary) 30%, var(--color-accent-neon) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .page-header-section p {
+    font-size: 1.15rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    color: var(--color-accent-neon);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* Areas Grid */
+  .areas-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .area-card-wrapper {
+    height: 100%;
+  }
+
+  .area-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--color-surface-1);
+  }
+
+  .area-image-wrap {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-top-left-radius: calc(var(--radius-lg) - 2px);
+    border-top-right-radius: calc(var(--radius-lg) - 2px);
+  }
+
+  .area-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+  }
+
+  .area-card:hover .area-image {
+    transform: scale(1.05);
+  }
+
+  .area-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent, rgba(6, 3, 6, 0.85));
+  }
+
+  .area-content {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: var(--space-md);
+  }
+
+  .area-content h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  .area-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .area-btn {
+    align-self: flex-start;
+    width: 100%;
+  }
+
+  /* Dispatch Map Info */
+  .dispatch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xxl);
+    align-items: center;
+  }
+
+  .dispatch-info h2 {
+    font-size: 2.5rem;
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-lg);
+  }
+
+  .dispatch-info p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+  }
+
+  .dispatch-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .dispatch-feature {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .dispatch-feature i {
+    font-size: 1.25rem;
+  }
+
+  .text-purple {
+    color: var(--color-accent-neon);
+  }
+
+  .map-card {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .map-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--color-hairline);
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .map-header i {
+    color: var(--color-accent-neon);
+  }
+
+  .map-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #0d060d;
+  }
+
+  .map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Bottom CTA */
+  .cta-content {
+    text-align: center;
+    padding: var(--space-xxl);
+    background: linear-gradient(135deg, rgba(25, 15, 25, 0.9) 0%, rgba(17, 10, 17, 0.9) 100%);
+    border: 1px solid var(--color-hairline-accent);
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+    background: linear-gradient(135deg, var(--color-primary) 30%, var(--color-accent-neon) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .cta-content p {
+    font-size: 1.15rem;
+    margin-bottom: var(--space-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+
+  @media (max-width: 991px) {
+    .dispatch-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .page-header-section h1 {
+      font-size: 2.5rem;
+    }
+    
+    .cta-buttons {
+      flex-direction: column;
+    }
+  }
+</style>

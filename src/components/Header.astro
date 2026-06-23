@@ -1,0 +1,222 @@
+---
+const currentPath = Astro.url.pathname;
+const navItems = [
+  { label: 'Home', path: '/' },
+  { label: 'Detailing', path: '/auto-detailing' },
+  { label: 'Paint Correction', path: '/paint-correction' },
+  { label: 'Ceramic Coating', path: '/ceramic-coating' },
+  { label: 'Vinyl Wraps', path: '/vinyl-wraps' },
+  { label: 'PPF', path: '/paint-protection-film' },
+  { label: 'Maintenance', path: '/maintenance-plans' },
+  { label: 'About', path: '/about' }
+];
+---
+
+<header id="main-header" class="main-header">
+  <div class="container nav-container">
+    <a href="/" class="logo">
+      <img src="/images/royalty.png" alt="Royalty Auto Care Logo" class="logo-image" width="90" height="90" fetchpriority="high" />
+    </a>
+    
+    <button class="mobile-menu-btn" aria-label="Toggle navigation" id="mobileMenuBtn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    
+    <nav class="nav-links-wrapper" id="navMenu">
+      <ul class="nav-menu">
+        {navItems.map(item => (
+          <li>
+            <a 
+              href={item.path} 
+              class={`nav-link ${currentPath === item.path || (item.path !== '/' && currentPath.startsWith(item.path)) ? 'active' : ''}`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a href="/contact" class="btn btn-accent get-quote-btn">Get A Quote</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+  const navMenu = document.getElementById("navMenu");
+  const mainHeader = document.getElementById("main-header");
+
+  if (mobileMenuBtn && navMenu) {
+    mobileMenuBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      const icon = mobileMenuBtn.querySelector("i");
+      if (icon) {
+        if (navMenu.classList.contains("active")) {
+          icon.className = "fa-solid fa-xmark";
+        } else {
+          icon.className = "fa-solid fa-bars";
+        }
+      }
+    });
+  }
+
+  // Scroll effect
+  window.addEventListener("scroll", () => {
+    if (mainHeader) {
+      if (window.scrollY > 30) {
+        mainHeader.classList.add("scrolled");
+      } else {
+        mainHeader.classList.remove("scrolled");
+      }
+    }
+  }, { passive: true });
+</script>
+
+<style>
+  .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(6, 3, 6, 0.4);
+    border-bottom: 1px solid transparent;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
+
+  .main-header.scrolled {
+    background: rgba(6, 3, 6, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-hairline);
+    height: 85px;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-image {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    transition: var(--transition-smooth);
+  }
+
+  .main-header.scrolled .logo-image {
+    height: 75px;
+  }
+
+  .nav-links-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--space-md);
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-ink-muted);
+    padding: var(--space-xs) 0;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-link.active {
+    color: var(--color-primary);
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-accent-neon);
+    box-shadow: 0 0 8px var(--color-accent-neon);
+    border-radius: var(--radius-full);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 110;
+  }
+
+  .get-quote-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  /* Responsive styling */
+  @media (max-width: 810px) {
+    .mobile-menu-btn {
+      display: block;
+    }
+
+    .nav-links-wrapper {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100vh;
+      width: 280px;
+      background: var(--color-surface-1);
+      border-left: 1px solid var(--color-hairline);
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 100px var(--space-lg) var(--space-lg) var(--space-lg);
+      gap: var(--space-xl);
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 105;
+    }
+
+    .nav-links-wrapper.active {
+      right: 0;
+    }
+
+    .nav-menu {
+      flex-direction: column;
+      width: 100%;
+      gap: var(--space-md);
+    }
+
+    .nav-link {
+      font-size: 1.15rem;
+      display: block;
+      width: 100%;
+    }
+
+    .get-quote-btn {
+      width: 100%;
+    }
+  }
+</style>

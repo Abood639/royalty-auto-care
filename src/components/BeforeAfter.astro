@@ -1,0 +1,262 @@
+---
+interface Props {
+  beforeImage?: string;
+  afterImage?: string;
+  beforeAlt?: string;
+  afterAlt?: string;
+  class?: string;
+}
+
+const {
+  beforeImage = "/before-detail.png",
+  afterImage = "/after-detail.png",
+  beforeAlt = "Car paint before detailing, showing scratches and swirl marks",
+  afterAlt = "Car paint after premium detailing, showing mirror gloss finish",
+  class: className = ""
+} = Astro.props;
+---
+
+<div class={`before-after-container ${className}`}>
+  <!-- After Image (Background) -->
+  <div class="image-after-wrap">
+    <img src={afterImage} alt={afterAlt} class="comparison-image" draggable="false" width="550" height="344" loading="lazy" />
+    <span class="badge badge-after">AFTER</span>
+  </div>
+  
+  <!-- Before Image (Overlay, clipped dynamically) -->
+  <div class="image-before-wrap" id="beforeWrap">
+    <img src={beforeImage} alt={beforeAlt} class="comparison-image" draggable="false" width="550" height="344" loading="lazy" />
+    <span class="badge badge-before">BEFORE</span>
+  </div>
+  
+  <!-- Slider Handle -->
+  <div class="slider-handle" id="sliderHandle">
+    <div class="handle-line"></div>
+    <div class="handle-button">
+      <i class="fa-solid fa-arrows-left-right"></i>
+    </div>
+    <div class="handle-line"></div>
+  </div>
+</div>
+
+<script>
+  function initSliders() {
+    const containers = document.querySelectorAll(".before-after-container");
+    
+    containers.forEach(container => {
+      const beforeWrap = container.querySelector("#beforeWrap") as HTMLElement;
+      const handle = container.querySelector("#sliderHandle") as HTMLElement;
+      
+      if (!beforeWrap || !handle) return;
+      
+      let isDragging = false;
+      
+      function setSliderPosition(x: number) {
+        const rect = container.getBoundingClientRect();
+        const containerWidth = rect.width;
+        
+        // Calculate percentage relative to container width
+        let percentage = ((x - rect.left) / containerWidth) * 100;
+        
+        // Boundaries
+        if (percentage < 0) percentage = 0;
+        if (percentage > 100) percentage = 100;
+        
+        // Apply styling
+        beforeWrap.style.width = `${percentage}%`;
+        handle.style.left = `${percentage}%`;
+      }
+      
+      // Event Listeners
+      function startDrag(e: MouseEvent | TouchEvent) {
+        isDragging = true;
+        container.classList.add("active");
+        handleX(e);
+      }
+      
+      function stopDrag() {
+        isDragging = false;
+        container.classList.remove("active");
+      }
+      
+      function handleX(e: MouseEvent | TouchEvent) {
+        if (!isDragging) return;
+        const pageX = 'touches' in e ? e.touches[0].pageX : e.pageX;
+        setSliderPosition(pageX);
+      }
+      
+      // Mouse events
+      handle.addEventListener("mousedown", startDrag);
+      window.addEventListener("mouseup", stopDrag);
+      window.addEventListener("mousemove", handleX);
+      
+      // Touch events
+      handle.addEventListener("touchstart", startDrag, { passive: true });
+      window.addEventListener("touchend", stopDrag);
+      window.addEventListener("touchmove", handleX, { passive: true });
+      
+      // Prevent standard dragging of elements inside
+      container.addEventListener("dragstart", (e) => e.preventDefault());
+      
+      // Set initial state (50%)
+      beforeWrap.style.width = "50%";
+      handle.style.left = "50%";
+    });
+  }
+
+  // Init on load
+  initSliders();
+  
+  // Re-run for Astro page transitions if any SPA-like loading occurs
+  document.addEventListener("astro:after-swap", initSliders);
+</script>
+
+<style>
+  .before-after-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    max-height: 550px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    user-select: none;
+    border: 1px solid var(--color-hairline);
+    background: var(--color-canvas);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+  
+  .before-after-container.active {
+    cursor: ew-resize;
+  }
+  
+  .image-after-wrap, .image-before-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .image-before-wrap {
+    border-right: 1px solid rgba(224, 76, 228, 0.3);
+    z-index: 10;
+  }
+  
+  .comparison-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  
+  /* Ensure the image size matches the container, even when clipped */
+  .image-after-wrap .comparison-image {
+    width: 100%;
+  }
+  
+  .image-before-wrap .comparison-image {
+    width: 100%;
+    /* Need to set width explicitly to match parent container width for correct scaling */
+    width: calc(100% * (100 / var(--slider-width, 100)));
+    min-width: 1000px;
+  }
+  
+  /* Modern CSS container query workaround or fixed width sizing:
+     We can just size the images absolute to fill container height and width */
+  .before-after-container .comparison-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .image-before-wrap {
+    width: 50%; /* initial value */
+  }
+  
+  /* Labels/badges styling */
+  .badge {
+    position: absolute;
+    bottom: var(--space-md);
+    padding: var(--space-xxs) var(--space-sm);
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    z-index: 20;
+    letter-spacing: 0.05em;
+  }
+  
+  .badge-before {
+    left: var(--space-md);
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--color-primary);
+    border: 1px solid var(--color-hairline);
+  }
+  
+  .badge-after {
+    right: var(--space-md);
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border: 1px solid var(--color-accent-neon);
+    box-shadow: 0 0 10px rgba(224, 76, 228, 0.4);
+  }
+  
+  /* Slider Handle styling */
+  .slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%; /* initial */
+    width: 2px;
+    height: 100%;
+    background: var(--color-accent-neon);
+    box-shadow: 0 0 10px var(--color-accent-neon);
+    z-index: 30;
+    cursor: ew-resize;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+  }
+  
+  .handle-line {
+    flex-grow: 1;
+    width: 2px;
+    background: var(--color-accent-neon);
+    opacity: 0.7;
+  }
+  
+  .handle-button {
+    width: 44px;
+    height: 44px;
+    background: #000000;
+    border: 2px solid var(--color-accent-neon);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    box-shadow: 0 0 15px rgba(224, 76, 228, 0.6);
+    transition: var(--transition-fast);
+  }
+  
+  .slider-handle:hover .handle-button {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px var(--color-accent-neon);
+    background: var(--color-surface-1);
+  }
+  
+  @media (max-width: 768px) {
+    .handle-button {
+      width: 38px;
+      height: 38px;
+      font-size: 0.8rem;
+    }
+  }
+</style>

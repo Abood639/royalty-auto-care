@@ -1,0 +1,434 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NeonCard from '../components/NeonCard.astro';
+---
+
+<Layout 
+  title="Get A Free Quote" 
+  description="Request a free mobile detailing, paint correction, or ceramic coating estimate. Serving Valrico, Tampa, and Brandon FL."
+>
+  <!-- Page Header -->
+  <section class="page-header-section">
+    <div class="container animate-fade-in">
+      <span class="eyebrow">BOOKINGS</span>
+      <h1>Get A Free Quote</h1>
+      <p>Fill out the form below with your vehicle details. We'll get back to you with a precise service estimate within 2-4 hours.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section Grid -->
+  <section class="contact-section-body section-padding">
+    <div class="container contact-grid">
+      <!-- Contact Info & FAQs -->
+      <div class="contact-info-col animate-on-scroll">
+        <span class="eyebrow">HELP & SUPPORT</span>
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-list">
+          <div class="faq-item">
+            <h4>Do you need access to water or electricity?</h4>
+            <p>No. Our mobile detailing truck is 100% self-contained. We carry our own filtered water tanks and clean power generators.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>How long does a detailing service take?</h4>
+            <p>Interior deep cleans and full details take 2-4 hours. Paint correction and ceramic coating treatments typically require 1 to 2 full days depending on condition.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h4>What is your bad weather policy?</h4>
+            <p>In case of rain, storm, or extreme winds, we will contact you to reschedule or move your vehicle inside a closed garage if you have one available.</p>
+          </div>
+        </div>
+        
+        <div class="direct-contact-box glass-panel">
+          <h4>Prefer to call or text?</h4>
+          <p>Get in touch directly with our dispatch team.</p>
+          <div class="direct-items">
+            <a href="tel:+18135394723" class="direct-link">
+              <i class="fa-solid fa-phone"></i> (813) 539-4723
+            </a>
+            <a href="mailto:rroyaltyautocare@gmail.com" class="direct-link">
+              <i class="fa-solid fa-envelope"></i> rroyaltyautocare@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Form Card -->
+      <div class="contact-form-col animate-on-scroll delay-100">
+        <NeonCard>
+          <div class="form-container" id="formWrapper">
+            <form id="quoteRequestForm" class="quote-form">
+              <h3>Vehicle Details</h3>
+              <p style="margin-bottom: var(--space-lg); font-size: 0.85rem;">Let us know what your vehicle needs.</p>
+              
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="name">Full Name *</label>
+                  <input type="text" id="name" name="name" required class="form-input" placeholder="John Doe" />
+                </div>
+                
+                <div class="form-group">
+                  <label for="phone">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" required class="form-input" placeholder="(813) 555-0199" />
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required class="form-input" placeholder="john@example.com" />
+              </div>
+              
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="vehicleSize">Vehicle Size *</label>
+                  <select id="vehicleSize" name="vehicleSize" required class="form-input">
+                    <option value="sedan">Sedan / Coupe</option>
+                    <option value="suv">Midsize SUV / Crossover</option>
+                    <option value="truck">Truck / Large SUV / Van</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="servicePackage">Desired Service *</label>
+                  <select id="servicePackage" name="servicePackage" required class="form-input">
+                    <optgroup label="Auto Detailing">
+                      <option value="detailing-full">Full Detail Service</option>
+                      <option value="detailing-interior">Premium Interior Detail</option>
+                      <option value="detailing-exterior">Premium Exterior Detail</option>
+                    </optgroup>
+                    <optgroup label="Paint Correction">
+                      <option value="correction-enhancement">Enhancement Package</option>
+                      <option value="correction-correction">Correction Package</option>
+                      <option value="correction-restoration">Restoration Package</option>
+                    </optgroup>
+                    <optgroup label="Ceramic Coating">
+                      <option value="coating-1year">1-Year Paint Shield Coating</option>
+                      <option value="coating-3year">3-Year Pro Ceramic Coating</option>
+                      <option value="coating-5year">5-Year Ultra Ceramic Coating</option>
+                      <option value="coating-interior">Interior Ceramic Protection (Leather/Cloth)</option>
+                    </optgroup>
+                    <optgroup label="Vinyl Wraps">
+                      <option value="wrap-full">Full Vehicle Wrap</option>
+                      <option value="wrap-chrome">Chrome Delete</option>
+                      <option value="wrap-roof-hood">Roof / Hood Wrap</option>
+                      <option value="wrap-partial">Partial / Custom Wrap</option>
+                      <option value="wrap-removal">Vehicle Wrap Removal</option>
+                    </optgroup>
+                    <optgroup label="Paint Protection Film (PPF)">
+                      <option value="ppf-track">Track Package PPF</option>
+                      <option value="ppf-partial-front">Partial Front End PPF</option>
+                      <option value="ppf-full-front">Full Front End PPF</option>
+                      <option value="ppf-full-vehicle">Full Vehicle PPF</option>
+                      <option value="ppf-spot">Spot / Panel Protection Film</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="notes">Additional Details / Notes</label>
+                <textarea id="notes" name="notes" rows="4" class="form-input" placeholder="Please list any specific concerns (heavy stains, dog hair, deep scratches on passenger door, etc.)"></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-accent form-submit-btn">Send Quote Request</button>
+            </form>
+          </div>
+          
+          <!-- Success State (hidden by default) -->
+          <div class="success-container" id="successWrapper" style="display: none;">
+            <i class="fa-solid fa-crown success-icon"></i>
+            <h2>Request Sent Successfully</h2>
+            <p>Thank you for choosing Royalty Auto Care! Our mobile detailing advisor will review your vehicle details and contact you with a final estimate shortly.</p>
+            <a href="/" class="btn btn-outline" style="margin-top: var(--space-md);">Return to Home</a>
+          </div>
+        </NeonCard>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function initForm() {
+    const form = document.getElementById("quoteRequestForm") as HTMLFormElement;
+    const formWrapper = document.getElementById("formWrapper") as HTMLElement;
+    const successWrapper = document.getElementById("successWrapper") as HTMLElement;
+    
+    if (!form) return;
+    
+    // Parse URL query parameters to pre-fill select options
+    const params = new URLSearchParams(window.location.search);
+    const vehicle = params.get("vehicle");
+    const pack = params.get("package");
+    const addons = params.get("addons");
+    
+    if (vehicle) {
+      const selectVehicle = document.getElementById("vehicleSize") as HTMLSelectElement;
+      if (selectVehicle) selectVehicle.value = vehicle;
+    }
+    
+    if (pack) {
+      const selectPackage = document.getElementById("servicePackage") as HTMLSelectElement;
+      if (selectPackage) {
+        if (pack === "detailing") {
+          selectPackage.value = "detailing-full";
+        } else if (pack === "correction") {
+          selectPackage.value = "correction-correction";
+        } else if (pack === "correction-1step") {
+          selectPackage.value = "correction-enhancement";
+        } else if (pack === "correction-2step") {
+          selectPackage.value = "correction-correction";
+        } else if (pack === "correction-3step") {
+          selectPackage.value = "correction-restoration";
+        } else if (pack === "coating") {
+          selectPackage.value = "coating-3year";
+        } else if (pack === "wrap") {
+          selectPackage.value = "wrap-full";
+        } else if (pack === "wrap-custom") {
+          selectPackage.value = "wrap-partial";
+        } else if (pack === "ppf") {
+          selectPackage.value = "ppf-full-front";
+        } else if (pack === "ppf-full") {
+          selectPackage.value = "ppf-full-vehicle";
+        } else if (pack === "ppf-addon") {
+          selectPackage.value = "ppf-spot";
+        } else if (pack === "engine") {
+          selectPackage.value = "detailing-full";
+          const notesText = document.getElementById("notes") as HTMLTextAreaElement;
+          if (notesText) notesText.value = "Interested in: Engine Bay Detail";
+        } else {
+          selectPackage.value = pack;
+        }
+      }
+    }
+
+    if (addons) {
+      const notesText = document.getElementById("notes") as HTMLTextAreaElement;
+      if (notesText) {
+        const addonNames = addons.split(',').map(a => {
+          if (a === 'engine') return 'Engine Bay Detail';
+          if (a === 'headlights') return 'Headlight Restoration';
+          if (a === 'pet-hair') return 'Heavy Pet Hair Removal';
+          return a;
+        });
+        const currentVal = notesText.value;
+        const prefix = `Interested in Add-ons: ${addonNames.join(', ')}`;
+        notesText.value = currentVal ? `${prefix}\n\n${currentVal}` : prefix;
+      }
+    }
+    
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+      // Collect values for validation/submitting (simulation)
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Simulate API submit delay
+      const submitBtn = form.querySelector(".form-submit-btn") as HTMLButtonElement;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+      }
+      
+      setTimeout(() => {
+        // Show success state
+        if (formWrapper && successWrapper) {
+          formWrapper.style.display = "none";
+          successWrapper.style.display = "flex";
+        }
+      }, 1200);
+    });
+  }
+  
+  initForm();
+  document.addEventListener("astro:after-swap", initForm);
+</script>
+
+<style>
+  /* Header section */
+  .page-header-section {
+    padding-top: 160px;
+    padding-bottom: 60px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, rgba(139, 47, 141, 0.08) 0%, transparent 60%);
+    border-bottom: 1px solid var(--color-hairline);
+  }
+
+  .page-header-section h1 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0 var(--space-md) 0;
+  }
+
+  .page-header-section p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Layout Grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: var(--space-xxl);
+    align-items: flex-start;
+  }
+
+  .contact-info-col h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0 var(--space-xl) 0;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xxl);
+  }
+
+  .faq-item h4 {
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .faq-item p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .direct-contact-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .direct-contact-box h4 {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+  }
+
+  .direct-contact-box p {
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
+  .direct-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: var(--space-xs);
+  }
+
+  .direct-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    color: var(--color-accent-neon);
+    font-weight: 600;
+    font-size: 0.95rem;
+    width: fit-content;
+  }
+
+  .direct-link:hover {
+    color: var(--color-primary);
+    text-shadow: 0 0 10px rgba(255,255,255,0.4);
+  }
+
+  .direct-link i {
+    width: 16px;
+    text-align: center;
+  }
+
+  /* Form Container styling */
+  .form-container {
+    padding: var(--space-md);
+  }
+
+  .quote-form h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .form-input {
+    width: 100%;
+  }
+
+  textarea.form-input {
+    resize: vertical;
+  }
+
+  /* Custom dropdown selectors */
+  select.form-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 40px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .form-submit-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    font-size: 0.95rem;
+    margin-top: var(--space-md);
+  }
+
+  /* Success wrapper styling */
+  .success-container {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-md);
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  .success-icon {
+    font-size: 3rem;
+    color: var(--color-accent-neon);
+    filter: drop-shadow(0 0 10px rgba(224, 76, 228, 0.5));
+    margin-bottom: var(--space-xs);
+  }
+
+  .success-container h2 {
+    color: var(--color-primary);
+    font-size: 1.75rem;
+  }
+
+  .success-container p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 320px;
+    margin: 0;
+  }
+
+  @media (max-width: 991px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 575px) {
+    .form-row-2 {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>

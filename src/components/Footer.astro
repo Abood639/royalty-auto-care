@@ -1,0 +1,260 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-col brand-col">
+      <a href="/" class="logo footer-logo">
+        <img src="/images/royalty.png" alt="Royalty Auto Care Logo" class="logo-image" width="90" height="90" loading="lazy" />
+      </a>
+      <p class="footer-desc">
+        Unwavering dedication to uncovering your car's true beauty. Every vehicle deserves the royal treatment.
+      </p>
+      <div class="social-links">
+        <a href="https://instagram.com/rroyaltyautocare" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul class="footer-links">
+        <li><a href="/auto-detailing">Auto Detailing</a></li>
+        <li><a href="/paint-correction">Paint Correction</a></li>
+        <li><a href="/ceramic-coating">Ceramic Coating</a></li>
+        <li><a href="/vinyl-wraps">Vinyl Wraps</a></li>
+        <li><a href="/paint-protection-film">Paint Protection Film</a></li>
+        <li><a href="/maintenance-plans">Maintenance & Fleet</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-col">
+      <h4>Service Areas</h4>
+      <ul class="footer-links">
+        <li><a href="/service-areas/valrico-fl">Valrico, FL</a></li>
+        <li><a href="/service-areas/tampa-fl">Tampa, FL</a></li>
+        <li><a href="/service-areas/brandon-fl">Brandon, FL</a></li>
+        <li><a href="/service-areas/st-petersburg-fl">St. Petersburg, FL</a></li>
+        <li><a href="/service-areas/clearwater-fl">Clearwater, FL</a></li>
+        <li><a href="/service-areas/lakeland-fl">Lakeland, FL</a></li>
+        <li><a href="/service-areas/spring-hill-fl">Spring Hill, FL</a></li>
+        <li style="margin-top: 4px;"><a href="/service-areas" style="font-size: 0.8rem; text-decoration: underline; color: var(--color-accent-neon);">View All Areas</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-col contact-col">
+      <h4>Contact Us</h4>
+      <ul class="contact-info">
+        <li>
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+18135394723">(813) 539-4723</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:rroyaltyautocare@gmail.com">rroyaltyautocare@gmail.com</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Valrico, FL 33596 &mdash; Serving Tampa Bay</span>
+        </li>
+        <li>
+          <i class="fa-solid fa-clock"></i>
+          <span>Mon - Sun: 8:00 AM - 6:00 PM</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="container footer-bottom-content">
+      <p>&copy; {currentYear} Royalty Auto Care LLC. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/contact">Book Now</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-canvas);
+    border-top: 1px solid var(--color-hairline);
+    padding: 80px 0 0 0;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-xxl);
+  }
+
+  .footer-col h4 {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-lg);
+    letter-spacing: 0.02em;
+    position: relative;
+    padding-bottom: var(--space-xs);
+  }
+
+  .footer-col h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: var(--color-accent);
+  }
+
+  .brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .footer-logo .logo-image {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .footer-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-hairline);
+    color: var(--color-ink-muted);
+    font-size: 1.1rem;
+    transition: var(--transition-smooth);
+  }
+
+  .social-links a:hover {
+    color: var(--color-primary);
+    border-color: var(--color-accent-neon);
+    box-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+    background: rgba(139, 47, 141, 0.1);
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .footer-links a, .footer-links li {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    transition: var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-primary);
+    padding-left: 4px;
+  }
+
+  .contact-info {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .contact-info li {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+  }
+
+  .contact-info i {
+    color: var(--color-accent-neon);
+    margin-top: 3px;
+    width: 16px;
+    text-align: center;
+  }
+
+  .contact-info a {
+    color: var(--color-ink-muted);
+    transition: var(--transition-fast);
+  }
+
+  .contact-info a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--color-hairline);
+    padding: var(--space-lg) 0;
+    background: #030103;
+  }
+
+  .footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .footer-bottom-content p {
+    font-size: 0.85rem;
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    gap: var(--space-lg);
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+  }
+
+  .footer-bottom-links a:hover {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 991px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 575px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+    
+    .footer-bottom-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

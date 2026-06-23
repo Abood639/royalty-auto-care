@@ -1,0 +1,1256 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NeonCard from '../components/NeonCard.astro';
+
+const packages = [
+  {
+    name: "Premium Exterior",
+    price: "From $120",
+    desc: "Safe exterior hand wash with paint iron decontamination, clay bar smoothing, and polymer gloss protection.",
+    features: [
+      "Foam cannon bath & two-bucket hand wash",
+      "Chemical iron deposit decontamination",
+      "Clay bar surface smoothing treatment",
+      "Clean wheels, tires & fender wells",
+      "Clean door jambs & trunk channels",
+      "Premium glossy sealant (3-month shield)",
+      "Streak-free cleaning of all exterior glass"
+    ],
+    accent: false
+  },
+  {
+    name: "Full Detail Service",
+    price: "From $225",
+    desc: "Our signature bumper-to-bumper detailing package. Restores interior freshness with enzymatic odor treatments and protects paint with a ceramic sealant.",
+    features: [
+      "Professional hand wash & dry",
+      "Deep cleaning of wheels, tires & wheel faces",
+      "Iron decontamination & clay bar treatment",
+      "Ceramic sealant on paint, windows & wheels",
+      "Tire dressing & door jamb cleaning",
+      "Thorough vacuum of carpets, seats & trunk",
+      "Full interior sanitization & vent cleaning",
+      "Deep clean of cup holders & tight areas",
+      "Leather cleaning & conditioning",
+      "Enzymatic odor elimination treatment"
+    ],
+    accent: true
+  },
+  {
+    name: "Premium Interior Detail",
+    price: "From $295",
+    desc: "Restorative interior sanitation for neglected or heavily used vehicles. Focuses on hot-water carpet extraction and deep upholstery shampooing.",
+    features: [
+      "All standard interior detailing inclusions",
+      "Shampoo & 210°F hot-water carpet extraction",
+      "Shampoo & extraction of fabric seats & mats",
+      "Deep cleaning of leather seating surfaces",
+      "Headliner stain treatment & spot cleaning",
+      "Pet hair removal on leather (no charge)",
+      "Enzymatic odor treatment & sanitation"
+    ],
+    accent: false
+  }
+];
+
+const specialties = [
+  {
+    name: "Engine Bay Cleaning",
+    price: "From $50",
+    icon: "fa-solid fa-gauge-high",
+    desc: "Carefully restores engine compartment covers and components to a factory-clean appearance.",
+    includes: [
+      "Removal of loose debris",
+      "Degreasing & cleaning of engine surfaces",
+      "Cleaning of plastics and covers",
+      "Dressing plastics for factory look",
+      "Easier leak detection & maintenance"
+    ]
+  },
+  {
+    name: "Headlight Restoration",
+    price: "From $100",
+    icon: "fa-solid fa-eye",
+    desc: "Safely removes severe oxidation, yellowing, and haze to restore crisp nighttime visibility.",
+    includes: [
+      "Deep cleaning & prep",
+      "Multi-stage wet sanding",
+      "Machine polishing & refinement",
+      "2-Year ceramic UV protection coating",
+      "Restores nighttime visibility & look"
+    ]
+  },
+  {
+    name: "Wrap Removal",
+    price: "Contact for Quote",
+    icon: "fa-solid fa-scissors",
+    desc: "Safely peels older, faded, or cracked vinyl vehicle wraps without compromising paint clear coat.",
+    includes: [
+      "Safe vinyl wrap removal",
+      "Adhesive residue removal",
+      "Paint decontamination wash",
+      "Safe removal around trim and edges",
+      "Fleet or lease return prep"
+    ]
+  },
+  {
+    name: "Window Polishing",
+    price: "From $100",
+    icon: "fa-solid fa-droplet-slash",
+    desc: "Polishes automotive glass to strip water spots, heavy minerals, and surface staining.",
+    includes: [
+      "Removes water spots & etching",
+      "Removes hard mineral deposits",
+      "Stops wiper chattering",
+      "Restores glass optical clarity",
+      "Prepares glass for sealants"
+    ]
+  }
+];
+---
+
+<Layout 
+  title="Mobile Auto Detailing Packages" 
+  description="Explore our mobile interior deep clean, premium exterior hand wash, and complete auto detailing packages in Valrico and Tampa."
+>
+  <!-- Page Header -->
+  <section class="page-header-section">
+    <div class="container animate-fade-in">
+      <span class="eyebrow">PROFESSIONAL MOBILITY</span>
+      <h1>Auto Detailing Packages</h1>
+      <p>We arrive fully equipped at your driveway with spot-free water, power, and professional-grade products. Skip the waiting room—we bring the royal treatment to you.</p>
+    </div>
+  </section>
+
+  <!-- Packages Grid -->
+  <section class="packages-section section-padding">
+    <div class="container packages-grid">
+      {packages.map((pkg, index) => (
+        <div class="animate-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+          {pkg.accent ? (
+            <NeonCard class="featured-package-card">
+              <div class="pkg-header">
+                <span class="featured-badge">MOST POPULAR</span>
+                <h3>{pkg.name}</h3>
+                <span class="pkg-price">{pkg.price}</span>
+                <p>{pkg.desc}</p>
+              </div>
+              <ul class="pkg-features">
+                {pkg.features.map(feat => (
+                  <li>
+                    <i class="fa-solid fa-circle-check feat-icon icon-glow"></i>
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={`/contact?package=detailing`} class="btn btn-accent pkg-btn">Book Package</a>
+            </NeonCard>
+          ) : (
+            <div class="glass-panel standard-package-card">
+              <div class="pkg-header">
+                <h3>{pkg.name}</h3>
+                <span class="pkg-price">{pkg.price}</span>
+                <p>{pkg.desc}</p>
+              </div>
+              <ul class="pkg-features">
+                {pkg.features.map(feat => (
+                  <li>
+                    <i class="fa-solid fa-circle-check feat-icon"></i>
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={`/contact?package=detailing`} class="btn btn-outline pkg-btn">Book Package</a>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Detailed Breakdowns Section -->
+  <section class="detailed-breakdowns-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">IN-DEPTH RESTORATION</span>
+        <h2>Detailed Package Breakdowns</h2>
+        <p>Explore the complete scope, professional processes, and advanced treatments included in our main packages.</p>
+      </div>
+
+      <!-- Full Detail Service Breakdown -->
+      <div class="breakdown-card glass-panel animate-on-scroll">
+        <div class="breakdown-hero">
+          <div class="hero-left">
+            <span class="pkg-badge">FULL DETAIL SERVICE</span>
+            <h3>Complete Refresh, Restore & Protect</h3>
+            <p class="pkg-intro-text">
+              Our Full Detail service is designed to completely refresh, restore, and protect your vehicle inside and out. This is far more than a basic car wash or quick interior wipe down. We focus on the deep details that most shops overlook while using professional-grade processes and products to deliver long-lasting results.
+            </p>
+            <p class="pkg-intro-text">
+              Whether your vehicle needs a reset after daily driving, kids, pets, road trips, or simply months of buildup, this service brings your vehicle back to a clean, protected, and refreshed condition.
+            </p>
+            
+            <div class="detail-focus-box">
+              <h5>Attention to Detail Matters</h5>
+              <p>At Royalty Auto Care, we believe the difference is in the details. From vents and cup holders to wheels and door jambs, nothing is overlooked.</p>
+              <p class="focus-goal"><strong>Our goal is simple:</strong> To make your vehicle feel clean, protected, refreshed, and enjoyable to drive again.</p>
+            </div>
+          </div>
+          
+          <div class="hero-right">
+            <div class="detail-sub-section">
+              <h4>Exterior Detail</h4>
+              <p class="sub-section-desc">Your exterior receives a safe and thorough hand wash process designed to clean and protect the vehicle without relying on harsh tunnel washes that create scratches and swirl marks.</p>
+              <ul class="detail-bullet-list">
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Professional hand wash</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Deep cleaning of wheels, tires, and wheel faces</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Iron decontamination</strong> to remove embedded contaminants from paint and wheels</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Streak-free exterior glass cleaning</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Tire dressing</strong> for a clean, finished look</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Door jamb cleaning</strong></span></li>
+                <li>
+                  <i class="fa-solid fa-circle-check text-purple"></i>
+                  <div>
+                    <strong>Application of a ceramic sealant</strong> to:
+                    <div class="bullet-sub-list">
+                      <span>Paint</span>
+                      <span>Windows</span>
+                      <span>Wheels</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <p class="sealant-note">Our ceramic sealant adds gloss, slickness, water repellency, and protection while helping make future maintenance easier.</p>
+            </div>
+            
+            <div class="detail-sub-section">
+              <h4>Interior Detail</h4>
+              <p class="sub-section-desc">The interior is thoroughly cleaned, sanitized, and refreshed from top to bottom with attention paid to every surface and hard-to-reach area.</p>
+              <ul class="detail-bullet-list">
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Thorough vacuuming</strong> of carpets, seats, trunk, and crevices</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Full interior wipe down and sanitization</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Deep cleaning</strong> of cup holders, vents, cracks, and tight areas</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Interior window cleaning</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Door jamb cleaning</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Leather conditioning</strong> to restore a clean, natural finish</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Enzymatic odor treatment</strong> designed to break down and destroy odor-causing bacteria at the source</span></li>
+              </ul>
+              <p class="sealant-note">We don’t simply mask odors with fragrances. Our enzymatic treatment targets and eliminates organic odor buildup caused by food, spills, pets, moisture, smoke, and everyday use.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Interior Detail Breakdown -->
+      <div class="breakdown-card glass-panel animate-on-scroll" style="margin-top: var(--space-xl);">
+        <div class="breakdown-hero">
+          <div class="hero-left">
+            <span class="pkg-badge">PREMIUM INTERIOR SERVICE</span>
+            <h3>Deep Restorative Upholstery Reset</h3>
+            <p class="pkg-intro-text">
+              Our Premium Interior Detail is a deep restorative interior service designed for vehicles that need more than a standard cleaning. This service targets embedded dirt, stains, spills, odors, pet hair, and heavy buildup throughout the entire cabin to bring the interior back to a clean, refreshed condition.
+            </p>
+            <p class="pkg-intro-text">
+              This is the ideal service for family vehicles, work trucks, pet owners, rideshare vehicles, and interiors that have been heavily used over time.
+            </p>
+            
+            <div class="detail-focus-box">
+              <h5>Interior Restoration Focus</h5>
+              <p>The goal of this service is not just to make the vehicle "look clean," but to fully reset the interior environment and restore comfort, cleanliness, and freshness throughout the cabin.</p>
+              <p class="focus-goal">From heavily used carpets to stained seats and overlooked cracks and crevices, we take pride in addressing the details most people miss.</p>
+            </div>
+          </div>
+          
+          <div class="hero-right">
+            <div class="detail-sub-section">
+              <h4>Premium Interior Service Includes</h4>
+              <p class="sub-section-desc">Everything included in our Full Detail Interior Service, plus advanced deep-cleaning and extraction processes.</p>
+              <ul class="detail-bullet-list">
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span>Thorough vacuuming of carpets, seats, trunk, and crevices</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span>Full interior sanitization and wipe down</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span>Cleaning of vents, cup holders, cracks, door panels, and tight areas</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span>Interior glass cleaning</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span>Door jamb cleaning</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span>Leather conditioning</span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span>Enzymatic odor treatment to break down and destroy odor-causing bacteria</span></li>
+              </ul>
+            </div>
+            
+            <div class="detail-sub-section">
+              <h4>Deep Cleaning & Extraction</h4>
+              <p class="sub-section-desc">Our extraction and shampoo process helps lift embedded dirt, spills, oils, and buildup from interior fabrics while restoring a cleaner, fresher appearance.</p>
+              <ul class="detail-bullet-list">
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Shampoo and extraction of carpet flooring</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Shampoo and extraction of carpet floor mats</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Shampoo and extraction of cloth seats</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Deep cleaning of leather seating surfaces</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Headliner stain treatment and spot cleaning</strong></span></li>
+                <li><i class="fa-solid fa-circle-check text-purple"></i> <span><strong>Pet hair removal on leather interiors</strong> at no additional charge</span></li>
+              </ul>
+            </div>
+
+            <div class="detail-sub-section">
+              <h4>Odor Removal Process</h4>
+              <p class="sub-section-desc">We use professional enzymatic cleaners designed to attack odors at the source instead of simply covering them up.</p>
+              <p class="odor-elim-text">This treatment helps eliminate odors caused by:</p>
+              <div class="odor-causes-grid">
+                <span>Pets</span>
+                <span>Food and drink spills</span>
+                <span>Smoke</span>
+                <span>Moisture</span>
+                <span>Sweat and everyday buildup</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile Detailing Advantage -->
+  <section class="advantage-section section-padding">
+    <div class="container advantage-grid">
+      <div class="advantage-info animate-on-scroll">
+        <span class="eyebrow">WHAT WE USE</span>
+        <h2>Professional Detailing Equipment</h2>
+        <p>
+          We don't use harsh brush washes that scratch your paint. We use premium microfiber mitts, dual-bucket wash systems, professional steam extractors for carpets, and pH-neutral detailing formulas safe for delicate leathers and clear coats.
+        </p>
+        <div class="adv-list">
+          <div class="adv-item">
+            <i class="fa-solid fa-droplet"></i>
+            <div>
+              <h4>Deionized Spot-Free Water</h4>
+              <p>Our truck is equipped with filtered deionized water, meaning zero calcium mineral spots left on your paint or glass.</p>
+            </div>
+          </div>
+          
+          <div class="adv-item">
+            <i class="fa-solid fa-wind"></i>
+            <div>
+              <h4>Hot Water Extraction</h4>
+              <p>We deep clean carpets and fabric seats using 210°F hot steam extraction to melt dirt, lift stains, and kill 99% of bacteria.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="advantage-visual animate-on-scroll delay-100">
+        <div class="video-mock glass-panel">
+          <div class="window-bar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="window-title">Detailing Showcase</span>
+          </div>
+          <img src="/after-detail.png" alt="Polishing sports car paint" class="mock-img" width="500" height="340" loading="lazy" />
+          <div class="mock-play">
+            <i class="fa-solid fa-circle-play"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialty Detailing & Add-On Services -->
+  <section class="specialties-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">SPECIALTY TREATMENTS</span>
+        <h2>Specialty Detailing Services</h2>
+        <p>Targeted solutions for specific areas of your vehicle to restore clarity, safety, and visual appeal.</p>
+      </div>
+
+      <div class="specialties-grid">
+        {specialties.map((spec, index) => (
+          <div class="animate-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+            <NeonCard>
+              <div class="spec-card-body">
+                <div class="spec-icon-title">
+                  <div class="spec-icon-wrap">
+                    <i class={spec.icon}></i>
+                  </div>
+                  <h3>{spec.name}</h3>
+                </div>
+                <span class="spec-price-tag">{spec.price}</span>
+                <p class="spec-desc">{spec.desc}</p>
+                <ul class="spec-bullets">
+                  {spec.includes.map(inc => (
+                    <li>
+                      <i class="fa-solid fa-circle-check bullet-icon"></i>
+                      <span>{inc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </NeonCard>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Educational Section: Used & Pre-Sale Detailing -->
+  <section class="edu-section section-padding">
+    <div class="container edu-grid">
+      <!-- Used Vehicle detailing -->
+      <div class="edu-col glass-panel animate-on-scroll">
+        <span class="eyebrow">VEHICLE ACQUISITION RESET</span>
+        <h3>Detailing a Used Vehicle</h3>
+        <p class="edu-intro">When purchasing a used vehicle, you inherit everything left by the previous owner: odors, bacteria, stains, body oils, pet hair, and hidden buildup.</p>
+        <p class="edu-text">A professional detail resets the vehicle. Our deep sanitization and enzymatic odor treatments eliminate hidden contaminants from carpets, seats, and vents, making it truly feel like your own clean environment.</p>
+        <div class="edu-benefits">
+          <h4>Key Reset Benefits:</h4>
+          <ul>
+            <li><i class="fa-solid fa-circle-check text-purple"></i> Removes odors & sanitizes contact areas</li>
+            <li><i class="fa-solid fa-circle-check text-purple"></i> Deep cleans fabrics, carpets & leathers</li>
+            <li><i class="fa-solid fa-circle-check text-purple"></i> Eliminates hidden bacteria at the source</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pre-Sale Detailing -->
+      <div class="edu-col glass-panel animate-on-scroll delay-100">
+        <span class="eyebrow">MAXIMIZE VALUE & INTEREST</span>
+        <h3>Detailing Before Selling</h3>
+        <p class="edu-intro">First impressions dictate buyer confidence. A clean, glossy, well-presented vehicle commands higher values and quicker sales than one that looks neglected.</p>
+        <p class="edu-text">Buyers assume a clean car has been mechanically cared for. Professional pre-sale detailing dramatically improves listing photos, attracts serious buyers, and maximizes your trade-in or private resale value.</p>
+        <div class="edu-benefits">
+          <h4>Key Selling Benefits:</h4>
+          <ul>
+            <li><i class="fa-solid fa-circle-check text-purple"></i> Maximizes photos & listing presentation</li>
+            <li><i class="fa-solid fa-circle-check text-purple"></i> Attracts serious buyers immediately</li>
+            <li><i class="fa-solid fa-circle-check text-purple"></i> Increases perceived and final vehicle value</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Products & Processes Section -->
+  <section class="products-section section-padding">
+    <div class="container">
+      <div class="products-container glass-panel animate-on-scroll">
+        <div class="products-header">
+          <span class="eyebrow">PREMIUM CHEMISTRY</span>
+          <h2>Professional Products & Processes</h2>
+          <p>We exclusively use professional-grade formulations from <strong>High Hand Chemical Co</strong> to deliver state-of-the-art results through safe, modern science.</p>
+        </div>
+
+        <div class="products-features-grid">
+          <div class="product-feature">
+            <i class="fa-solid fa-flask"></i>
+            <h4>Advanced Safe Chemistry</h4>
+            <p>Modern pH-neutral cleaners designed to safely lift grease and road film without damaging delicate leathers, clear coats, or trims.</p>
+          </div>
+          
+          <div class="product-feature">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h4>Ceramic Sealant Defense</h4>
+            <p>High-performance sealants for paint, glass, and wheels that add intense water repellency, high gloss, slickness, and lasting UV protection.</p>
+          </div>
+
+          <div class="product-feature">
+            <i class="fa-solid fa-virus-slash"></i>
+            <h4>Enzymatic Treatments</h4>
+            <p>Organic odor elimination that breaks down odor-causing bacteria at the source, rather than temporarily masking smells with fragrances.</p>
+          </div>
+
+          <div class="product-feature">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <h4>Premium Finishes</h4>
+            <p>Conditioners and dressings that restore clean, natural, factory-like surfaces without leaving sticky or greasy residues behind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="cta-section section-padding">
+    <div class="container">
+      <div class="cta-content glass-panel animate-on-scroll">
+        <h2>Unsure Which Detailing Package Fits?</h2>
+        <p>Get in touch with us. We will discuss your vehicle's condition and recommend a custom plan.</p>
+        <div class="cta-buttons">
+          <a href="tel:+18135394723" class="btn btn-primary"><i class="fa-solid fa-phone"></i> (813) 539-4723</a>
+          <a href="/contact" class="btn btn-accent">Request Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Header section */
+  .page-header-section {
+    padding-top: 160px;
+    padding-bottom: 60px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0%, rgba(139, 47, 141, 0.08) 0%, transparent 60%);
+    border-bottom: 1px solid var(--color-hairline);
+  }
+
+  .page-header-section h1 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0 var(--space-md) 0;
+  }
+
+  .page-header-section p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Packages section */
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .featured-package-card, .standard-package-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .standard-package-card {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .pkg-header {
+    margin-bottom: var(--space-lg);
+    position: relative;
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border: 1px solid var(--color-accent-neon);
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .pkg-header h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .pkg-price {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-accent-neon);
+    display: block;
+    margin-bottom: var(--space-md);
+  }
+
+  .pkg-header p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .pkg-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+    flex-grow: 1;
+  }
+
+  .pkg-features li {
+    display: flex;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+  }
+
+  .feat-icon {
+    color: var(--color-ink-muted);
+    font-size: 1rem;
+    margin-top: 2px;
+  }
+
+  .icon-glow {
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 5px rgba(224, 76, 228, 0.4);
+  }
+
+  .pkg-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Advantage Grid */
+  .advantage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xxl);
+    align-items: center;
+  }
+
+  .advantage-info h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0 var(--space-md) 0;
+  }
+
+  .advantage-info p {
+    margin-bottom: var(--space-xl);
+  }
+
+  .adv-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .adv-item {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .adv-item i {
+    font-size: 1.5rem;
+    color: var(--color-accent-neon);
+    background: rgba(139, 47, 141, 0.15);
+    border: 1px solid var(--color-accent);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+  }
+
+  .adv-item h4 {
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xxs);
+  }
+
+  .adv-item p {
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Video mock box */
+  .video-mock {
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--radius-lg);
+  }
+
+  .window-bar {
+    background: var(--color-surface-2);
+    border-bottom: 1px solid var(--color-hairline);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-full);
+  }
+
+  .dot.red { background: #ff5f56; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #27c93f; }
+
+  .window-title {
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+    margin-left: var(--space-xs);
+  }
+
+  .mock-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.75;
+  }
+
+  .mock-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-primary);
+    font-size: 3rem;
+    cursor: pointer;
+    text-shadow: 0 0 20px rgba(0,0,0,0.8);
+    transition: var(--transition-fast);
+  }
+
+  .video-mock:hover .mock-play {
+    transform: translate(-50%, -50%) scale(1.1);
+    color: var(--color-accent-neon);
+  }
+
+  /* Bottom CTA */
+  .cta-content {
+    text-align: center;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    color: var(--color-primary);
+  }
+
+  .cta-content p {
+    font-size: 1rem;
+    max-width: 500px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  @media (max-width: 991px) {
+    .packages-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .advantage-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-header-section h1 {
+      font-size: 2.25rem;
+    }
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+    .cta-buttons a {
+      width: 100%;
+    }
+  }
+
+  /* Engine Bay Section styling */
+  .engine-bay-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--space-xxl);
+    align-items: center;
+    border-top: 1px solid var(--color-hairline);
+    padding-top: var(--space-xxl);
+    margin-top: var(--space-xxl);
+  }
+
+  .engine-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+  }
+
+  .engine-price {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .engine-bay-info h3 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .engine-features-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .engine-block h4 {
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-sm);
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  .engine-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .engine-list li {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .engine-list li i {
+    color: var(--color-accent-neon);
+    margin-top: 3px;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 991px) {
+    .engine-bay-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+    .engine-features-split {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+
+  /* Detailed Breakdowns styling */
+  .detailed-breakdowns-section {
+    border-top: 1px solid var(--color-hairline);
+    background: radial-gradient(circle at 50% 0%, rgba(139, 47, 141, 0.04) 0%, transparent 60%);
+  }
+
+  .breakdown-card {
+    padding: var(--space-xl);
+    border: 1px solid var(--color-hairline-accent);
+    margin-top: var(--space-xl);
+  }
+
+  .breakdown-hero {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-xxl);
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .pkg-badge {
+    align-self: flex-start;
+    background: rgba(139, 47, 141, 0.15);
+    color: var(--color-primary);
+    border: 1px solid var(--color-accent-neon);
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-left h3 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .pkg-intro-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+  }
+
+  .detail-focus-box {
+    background: rgba(139, 47, 141, 0.04);
+    border-left: 3px solid var(--color-accent-neon);
+    padding: var(--space-md);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    margin-top: var(--space-md);
+  }
+
+  .detail-focus-box h5 {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .detail-focus-box p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0 0 var(--space-xs) 0;
+    color: var(--color-ink-muted);
+  }
+
+  .detail-focus-box p.focus-goal {
+    margin: 0;
+    color: var(--color-primary);
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .detail-sub-section {
+    border-bottom: 1px solid var(--color-hairline);
+    padding-bottom: var(--space-lg);
+  }
+
+  .detail-sub-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .detail-sub-section h4 {
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-display);
+  }
+
+  .sub-section-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-ink-muted);
+    margin-bottom: var(--space-md);
+  }
+
+  .detail-bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-md) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .detail-bullet-list li {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .detail-bullet-list li i {
+    color: var(--color-accent-neon);
+    margin-top: 3px;
+    font-size: 0.85rem;
+  }
+
+  .bullet-sub-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+  }
+
+  .bullet-sub-list span {
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-hairline);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  .sealant-note {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-accent-neon);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .odor-elim-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .odor-causes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .odor-causes-grid span {
+    font-size: 0.8rem;
+    background: rgba(139, 47, 141, 0.1);
+    border: 1px solid rgba(224, 76, 228, 0.2);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  /* Specialties Grid */
+  .specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+
+  .spec-card-body {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    height: 100%;
+  }
+
+  .spec-icon-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .spec-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: rgba(139, 47, 141, 0.15);
+    border: 1px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent-neon);
+    font-size: 1.35rem;
+    box-shadow: 0 0 10px rgba(224, 76, 228, 0.2);
+    flex-shrink: 0;
+  }
+
+  .spec-icon-title h3 {
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .spec-price-tag {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .spec-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  .spec-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    margin: var(--space-xs) 0 0 0;
+  }
+
+  .spec-bullets li {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .bullet-icon {
+    color: var(--color-accent-neon);
+    margin-top: 3px;
+    font-size: 0.8rem;
+  }
+
+  /* Educational Used & Pre-Sale Grid */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    border-top: 1px solid var(--color-hairline);
+    padding-top: var(--space-xxl);
+    margin-top: var(--space-xl);
+  }
+
+  .edu-col {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .edu-col h3 {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin: var(--space-xxs) 0;
+  }
+
+  .edu-intro {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    line-height: 1.6;
+  }
+
+  .edu-text {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+  }
+
+  .edu-benefits h4 {
+    font-size: 0.95rem;
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .edu-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .edu-benefits li {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    gap: var(--space-xs);
+    align-items: flex-start;
+  }
+
+  .text-purple {
+    color: var(--color-accent-neon);
+    margin-top: 3px;
+    font-size: 0.8rem;
+  }
+
+  /* Products & Processes */
+  .products-section {
+    border-top: 1px solid var(--color-hairline);
+    background: radial-gradient(circle at 50% 100%, rgba(139, 47, 141, 0.05) 0%, transparent 60%);
+  }
+
+  .products-container {
+    padding: var(--space-xxl) var(--space-xl);
+  }
+
+  .products-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--space-xl) auto;
+  }
+
+  .products-header h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin: var(--space-xs) 0;
+  }
+
+  .products-header p {
+    font-size: 1rem;
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+  }
+
+  .products-features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .product-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-lg);
+  }
+
+  .product-feature i {
+    font-size: 1.75rem;
+    color: var(--color-accent-neon);
+    margin-bottom: var(--space-xxs);
+    text-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .product-feature h4 {
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  .product-feature p {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 991px) {
+    .breakdown-hero {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+    .hero-left h3 {
+      font-size: 1.8rem;
+    }
+    .specialties-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .edu-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+    .products-features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 575px) {
+    .products-features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

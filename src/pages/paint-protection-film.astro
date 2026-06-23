@@ -1,0 +1,639 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NeonCard from '../components/NeonCard.astro';
+
+const ppfPackages = [
+  {
+    name: "Track Package",
+    price: "Starting at $2,399",
+    desc: "Specifically targeted protection for the highest impact areas of the vehicle. Perfect for shielding vulnerable paint sections from high-speed track debris, road gravel, and bugs.",
+    includes: [
+      "Bumper protection",
+      "Partial hood coverage",
+      "Partial front fender protection",
+      "Mirror back protection"
+    ],
+    featured: false
+  },
+  {
+    name: "Partial Front End PPF",
+    price: "Starting at $2,599",
+    desc: "Excellent value front defense. Safeguards the primary impact zones on your vehicle's front profile while blending cleanly with the unprotected sections.",
+    includes: [
+      "Full front bumper protection",
+      "Partial hood coverage",
+      "Partial front fender coverage",
+      "Mirror back protection"
+    ],
+    featured: false
+  },
+  {
+    name: "Full Front End PPF",
+    price: "Starting at $2,999",
+    desc: "Our most popular PPF configuration. Provides complete seamless protection for all forward-facing surfaces. No visible lines on the hood or fenders.",
+    includes: [
+      "Full front bumper coverage",
+      "Full hood coverage (seamless edges)",
+      "Full front fender coverage (seamless edges)",
+      "Mirror covers protection",
+      "A-pillars and cab leading edge"
+    ],
+    featured: true
+  }
+];
+
+const fullPpfPricing = {
+  cars: "Starting at $5,499",
+  trucks: "Starting at $6,499",
+  desc: "The ultimate armor for your vehicle. Wraps all painted panels in high-gloss self-healing protection film. Complete protection against rock chips, swirl marks, parking lot scrapes, key scratches, and chemical etching."
+};
+
+const individualPanels = [
+  "Hood",
+  "Bumper",
+  "Fenders",
+  "Mirrors",
+  "Rocker Panels",
+  "A-Pillars",
+  "Door Cups",
+  "Door Edges"
+];
+
+const additionalPpf = [
+  {
+    name: "Headlight Protection Film",
+    price: "Starting at $199",
+    desc: "Protects costly headlight housings from rock impacts and UV oxidation fading.",
+    icon: "fa-solid fa-lightbulb"
+  },
+  {
+    name: "Door Edge Protection Film",
+    price: "Starting at $99",
+    desc: "Safeguards door edges from chipping when opening doors in tight parking spaces.",
+    icon: "fa-solid fa-door-closed"
+  },
+  {
+    name: "Door Cup Protection Film",
+    price: "Starting at $99",
+    desc: "Prevents nail scratches and ring marks behind the exterior door handles.",
+    icon: "fa-solid fa-hand-back-fist"
+  },
+  {
+    name: "Rocker Panel Protection Film",
+    price: "Starting at $299",
+    desc: "Protects lower side panels from tire sling, gravel, road debris, and tar.",
+    icon: "fa-solid fa-grip-lines"
+  },
+  {
+    name: "Piano Black Interior Protection Film",
+    price: "Starting at $299",
+    desc: "Shields highly scratch-prone interior console gloss trims from swirl marks and prints.",
+    icon: "fa-solid fa-palette"
+  }
+];
+---
+
+<Layout 
+  title="Paint Protection Film (PPF) Clear Bra" 
+  description="Protect your vehicle's paint from rock chips and scratches. High grade self healing Paint Protection Film (PPF) serving Tampa, Valrico, and Brandon FL."
+>
+  <!-- Page Header -->
+  <section class="page-header-section">
+    <div class="container page-header-grid animate-fade-in">
+      <div class="page-header-content">
+        <span class="eyebrow">CLEAR ARMOR</span>
+        <h1>Paint Protection Film (PPF)</h1>
+        <p>Guard your vehicle against rock chips, road gravel, bug acids, and surface scratches with our self-healing polyurethane Paint Protection Film. Virtually invisible defense with high gloss or matte finishes.</p>
+        <div class="header-actions">
+          <a href="/contact?package=ppf-full-front" class="btn btn-accent">Request PPF Quote</a>
+        </div>
+      </div>
+      <div class="page-header-visual">
+        <NeonCard>
+          <div class="visual-wrapper">
+            <img src="/images/ceramic-coating.png" alt="PPF Installation Showcase" class="header-img" width="500" height="375" fetchpriority="high" />
+          </div>
+        </NeonCard>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core PPF Packages -->
+  <section class="ppf-packages-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">FRONT DEFENSE</span>
+        <h2>Select Front Protection Level</h2>
+      </div>
+
+      <div class="tiers-grid">
+        {ppfPackages.map((pkg, index) => (
+          <div class="animate-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+            {pkg.featured ? (
+              <NeonCard class="featured-tier-card">
+                <div class="tier-header">
+                  <span class="featured-badge">RECOMMENDED</span>
+                  <h3>{pkg.name}</h3>
+                  <span class="tier-price">{pkg.price}</span>
+                  <p>{pkg.desc}</p>
+                </div>
+                <ul class="tier-includes">
+                  {pkg.includes.map(inc => (
+                    <li>
+                      <i class="fa-solid fa-circle-check inc-icon icon-glow"></i>
+                      <span>{inc}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="/contact?package=ppf" class="btn btn-accent tier-btn">Request Quote</a>
+              </NeonCard>
+            ) : (
+              <div class="glass-panel standard-tier-card">
+                <div class="tier-header">
+                  <h3>{pkg.name}</h3>
+                  <span class="tier-price">{pkg.price}</span>
+                  <p>{pkg.desc}</p>
+                </div>
+                <ul class="tier-includes">
+                  {pkg.includes.map(inc => (
+                    <li>
+                      <i class="fa-solid fa-circle-check inc-icon"></i>
+                      <span>{inc}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="/contact?package=ppf" class="btn btn-outline tier-btn">Request Quote</a>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Vehicle PPF & Individual Panels -->
+  <section class="full-ppf-section section-padding">
+    <div class="container full-ppf-grid">
+      <!-- Full Vehicle Card -->
+      <div class="full-ppf-column animate-on-scroll">
+        <NeonCard>
+          <div class="full-ppf-card-content">
+            <span class="eyebrow">COMPLETE ARMOR</span>
+            <h3>Full Vehicle PPF</h3>
+            <p>{fullPpfPricing.desc}</p>
+            <div class="pricing-summary">
+              <div class="price-row">
+                <span class="v-class">Cars:</span>
+                <span class="v-price">{fullPpfPricing.cars}</span>
+              </div>
+              <div class="price-row">
+                <span class="v-class">Trucks & SUVs:</span>
+                <span class="v-price">{fullPpfPricing.trucks}</span>
+              </div>
+            </div>
+            <a href="/contact?package=ppf-full" class="btn btn-accent full-ppf-btn">Book Full PPF Protection</a>
+          </div>
+        </NeonCard>
+      </div>
+
+      <!-- Individual Panels -->
+      <div class="panels-column animate-on-scroll delay-100">
+        <div class="glass-panel panels-card-content">
+          <span class="eyebrow">SPOT PROTECTION</span>
+          <h3>Individual Panel PPF</h3>
+          <span class="panel-price">Custom Quote</span>
+          <p class="panel-desc">Only need protection for specific high-wear panels? We can install custom film segments to target individual panels or wear-points on your vehicle.</p>
+          
+          <div class="panels-list-block">
+            <h4>Protected Panels:</h4>
+            <ul class="panels-grid-list">
+              {individualPanels.map(item => (
+                <li>
+                  <i class="fa-solid fa-circle-check text-purple"></i>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Protection Services -->
+  <section class="addons-section section-padding">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="eyebrow">ADDITIONAL PROTECTION</span>
+        <h2>Wear & Tear Film Accents</h2>
+        <p>Prevent scuffs and scratches on typical high-contact spots with specialized film applications.</p>
+      </div>
+
+      <div class="addons-grid">
+        {additionalPpf.map((addon, index) => (
+          <div class="animate-on-scroll" style={`transition-delay: ${index * 100}ms`}>
+            <NeonCard>
+              <div class="addon-card-body">
+                <div class="addon-icon-title">
+                  <div class="addon-icon-wrap">
+                    <i class={addon.icon}></i>
+                  </div>
+                  <h3>{addon.name}</h3>
+                </div>
+                <span class="addon-price-tag">{addon.price}</span>
+                <p class="addon-desc">{addon.desc}</p>
+                <a href="/contact?package=ppf-addon" class="btn btn-outline addon-btn">Request Spot Film</a>
+              </div>
+            </NeonCard>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Footnote pricing notice -->
+  <section class="notice-section">
+    <div class="container">
+      <p class="pricing-notice">
+        Pricing varies based on vehicle size, complexity, condition, film selection, and material requirements. Final pricing may vary after inspection.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Header section */
+  .page-header-section {
+    padding-top: 160px;
+    padding-bottom: 60px;
+    background: radial-gradient(circle at 50% 0%, rgba(139, 47, 141, 0.08) 0%, transparent 60%);
+    border-bottom: 1px solid var(--color-hairline);
+  }
+
+  .page-header-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-xl);
+    align-items: center;
+    text-align: left;
+  }
+
+  .page-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .page-header-content h1 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .page-header-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+  }
+
+  .header-actions {
+    margin-top: var(--space-xs);
+  }
+
+  .page-header-visual {
+    width: 100%;
+  }
+
+  .visual-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 991px) {
+    .page-header-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: var(--space-lg);
+    }
+
+    .page-header-content {
+      align-items: center;
+    }
+
+    .page-header-content p {
+      text-align: center;
+    }
+
+    .page-header-visual {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-xxl) auto;
+  }
+
+  .section-header h2 {
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin-top: var(--space-xs);
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-accent-neon);
+    letter-spacing: 0.1em;
+  }
+
+  /* Tiers Grid */
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .featured-tier-card, .standard-tier-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .tier-header {
+    margin-bottom: var(--space-lg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    border: 1px solid var(--color-accent-neon);
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .tier-header h3 {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+  }
+
+  .tier-price {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-accent-neon);
+    margin: var(--space-xs) 0;
+  }
+
+  .tier-header p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .tier-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    flex-grow: 1;
+    margin-bottom: var(--space-lg);
+  }
+
+  .tier-includes li {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .inc-icon {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+    margin-top: 3px;
+  }
+
+  .icon-glow {
+    color: var(--color-accent-neon);
+  }
+
+  .tier-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Full PPF Grid */
+  .full-ppf-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .full-ppf-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .pricing-summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    border-top: 1px solid var(--color-hairline);
+    border-bottom: 1px solid var(--color-hairline);
+    padding: var(--space-md) 0;
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.05rem;
+  }
+
+  .v-class {
+    color: var(--color-ink-muted);
+  }
+
+  .v-price {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-accent-neon);
+  }
+
+  .full-ppf-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Panels side card */
+  .panels-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .panel-price {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 10px rgba(224, 76, 228, 0.3);
+  }
+
+  .panel-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .panels-list-block h4 {
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .panels-grid-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xs);
+  }
+
+  .panels-grid-list li {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .text-purple {
+    color: var(--color-accent-neon);
+    font-size: 0.85rem;
+  }
+
+  /* Addons Grid */
+  .addons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .addon-card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: var(--space-md);
+  }
+
+  .addon-icon-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .addon-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: rgba(139, 47, 141, 0.1);
+    border: 1px solid var(--color-hairline-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--color-accent-neon);
+  }
+
+  .addon-icon-title h3 {
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .addon-price-tag {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-accent-neon);
+  }
+
+  .addon-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .addon-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Notice styling */
+  .notice-section {
+    padding-bottom: var(--space-xxl);
+    text-align: center;
+  }
+
+  .pricing-notice {
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 991px) {
+    .tiers-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .full-ppf-grid {
+      grid-template-columns: 1fr;
+    }
+    .full-ppf-column, .panels-column {
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .addons-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+</style>
