@@ -4,6 +4,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://royaltyautocare.net',
+  site: 'https://www.royaltyautocare.net',
   integrations: [sitemap()],
 });

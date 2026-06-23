@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { title, description = "Premium mobile detailing, paint correction, and certified System X ceramic coatings serving Valrico, Tampa & Brandon FL. The royal treatment for your car." } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://royaltyautocare.net').href;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://www.royaltyautocare.net').href;
 ---
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://royaltya
     <meta property="og:type" content="website" />
     <meta property="og:title" content={`${title} | Royalty Auto Care`} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://royaltyautocare.net/" />
+    <meta property="og:url" content="https://www.royaltyautocare.net/" />
     
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {

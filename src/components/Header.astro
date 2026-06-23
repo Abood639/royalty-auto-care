@@ -2,13 +2,13 @@
 const currentPath = Astro.url.pathname;
 const navItems = [
   { label: 'Home', path: '/' },
-  { label: 'Detailing', path: '/auto-detailing' },
-  { label: 'Paint Correction', path: '/paint-correction' },
-  { label: 'Ceramic Coating', path: '/ceramic-coating' },
-  { label: 'Vinyl Wraps', path: '/vinyl-wraps' },
-  { label: 'PPF', path: '/paint-protection-film' },
-  { label: 'Maintenance', path: '/maintenance-plans' },
-  { label: 'About', path: '/about' }
+  { label: 'Detailing', path: '/auto-detailing/' },
+  { label: 'Paint Correction', path: '/paint-correction/' },
+  { label: 'Ceramic Coating', path: '/ceramic-coating/' },
+  { label: 'Vinyl Wraps', path: '/vinyl-wraps/' },
+  { label: 'PPF', path: '/paint-protection-film/' },
+  { label: 'Maintenance', path: '/maintenance-plans/' },
+  { label: 'About', path: '/about/' }
 ];
 ---
 
@@ -35,7 +35,7 @@ const navItems = [
           </li>
         ))}
       </ul>
-      <a href="/contact" class="btn btn-accent get-quote-btn">Get A Quote</a>
+      <a href="/contact/" class="btn btn-accent get-quote-btn">Get A Quote</a>
     </nav>
   </div>
 </header>
